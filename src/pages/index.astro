@@ -1,20 +1,30 @@
 ---
-import '../styles/global.css';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import GuaranteeBlock from '../components/GuaranteeBlock.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import VerticalTeaser from '../components/VerticalTeaser.astro';
+import LeadForm from '../components/LeadForm.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>AC Apparel - Coming Soon</title>
-	</head>
-	<body class="min-h-screen bg-black flex items-center justify-center">
-		<div class="text-center">
-			<h1 class="text-4xl font-bold text-white mb-4">AC Apparel</h1>
-			<p class="text-lg text-gray-400">Coming Soon</p>
-		</div>
-	</body>
-</html>
+<Base
+  title="AC Apparel | Custom Apparel, Promo, and Print in Tampa FL"
+  description="Branded apparel, promotional products, and print for businesses. Mockup in 24 hours, flat-rate quotes. On your deadline or it ships free. Tampa, FL."
+  canonicalPath=""
+>
+  <Hero
+    title="Branded apparel, promo, and print. On your deadline or it ships free."
+    subtitle="Tampa-based, serving businesses across the Southeast. Mockup in 24 hours. Flat-rate quotes."
+    ctaText="Get a Quote"
+    imageUrl="/images/homepage/hero.webp"
+  />
+
+  <TrustBar />
+  <ServicesGrid />
+  <GuaranteeBlock />
+  <HowItWorks />
+  <VerticalTeaser />
+  <LeadForm source="homepage" />
+</Base>

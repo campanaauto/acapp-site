@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import PainBlock from '../components/PainBlock.astro';
+import GuaranteeBlock from '../components/GuaranteeBlock.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import LeadForm from '../components/LeadForm.astro';
+
+const painBullets = [
+  "Corporate ordering portals that take weeks",
+  "Opening event dates that won't move",
+  "Brand standard compliance that slows everything down",
+];
+
+const products = [
+  { name: "Brand-compliant tees and polos", image: "/images/franchise/product-1.webp" },
+  { name: "Opening event swag", image: "/images/franchise/product-2.webp" },
+  { name: "In-store signage", image: "/images/franchise/product-3.webp" },
+  { name: "Print collateral", image: "/images/franchise/product-4.webp" },
+  { name: "Staff uniforms", image: "/images/franchise/product-5.webp" },
+  { name: "Branded giveaways", image: "/images/franchise/product-6.webp" },
+];
+---
+
+<Base
+  title="Custom Apparel for Franchise Owners | AC Apparel Tampa FL"
+  description="Brand-compliant merch for franchise owners. Approved specs, local turnaround, no portal headaches. On your deadline or it ships free."
+  canonicalPath="/franchise"
+  ogImage="/images/franchise/hero.webp"
+>
+  <Hero
+    title="Brand-compliant merch for franchise owners. Approved specs, local turnaround, no corporate portal headaches."
+    subtitle="Opening event swag, staff uniforms, signage, and print collateral that meets corporate brand standards. Ordered direct, shipped when you need it."
+    ctaText="Get a Franchise Quote"
+    imageUrl="/images/franchise/hero.webp"
+  />
+
+  <PainBlock bullets={painBullets} />
+  <GuaranteeBlock />
+  <ProductGrid products={products} />
+  <HowItWorks />
+  <LeadForm source="franchise" />
+</Base>

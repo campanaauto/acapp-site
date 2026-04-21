@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import PainBlock from '../components/PainBlock.astro';
+import GuaranteeBlock from '../components/GuaranteeBlock.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import LeadForm from '../components/LeadForm.astro';
+
+const painBullets = [
+  "Missing your grand opening date",
+  "Inconsistent branding across service drive and showroom",
+  "Co-op budget deadlines forcing rushed vendor decisions",
+];
+
+const products = [
+  { name: "Service advisor polos", image: "/images/dealerships/product-1.webp" },
+  { name: "Lot flags and pennants", image: "/images/dealerships/product-2.webp" },
+  { name: "Customer gift tumblers", image: "/images/dealerships/product-3.webp" },
+  { name: "License plate frames", image: "/images/dealerships/product-4.webp" },
+  { name: "Event tent swag", image: "/images/dealerships/product-5.webp" },
+  { name: "Employee uniforms", image: "/images/dealerships/product-6.webp" },
+];
+---
+
+<Base
+  title="Custom Apparel for Auto Dealerships | AC Apparel Tampa FL"
+  description="Branded merch for dealerships. Service uniforms, lot flags, customer gifts, and event swag. Mockup in 24 hours. On your deadline or it ships free."
+  canonicalPath="/dealerships"
+  ogImage="/images/dealerships/hero.webp"
+>
+  <Hero
+    title="Branded merch for dealerships. Ready for your grand opening or it ships free."
+    subtitle="Service uniforms, lot flags, customer gifts, and event swag. Tampa-based, serving dealerships across Florida, Georgia, and the Carolinas."
+    ctaText="Get a Dealership Quote"
+    imageUrl="/images/dealerships/hero.webp"
+  />
+
+  <PainBlock bullets={painBullets} />
+  <GuaranteeBlock />
+  <ProductGrid products={products} />
+  <HowItWorks />
+  <LeadForm source="dealerships" />
+</Base>

@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import PainBlock from '../components/PainBlock.astro';
+import GuaranteeBlock from '../components/GuaranteeBlock.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import LeadForm from '../components/LeadForm.astro';
+
+const painBullets = [
+  "New hires starting without uniforms",
+  "Trade show dates creeping up fast",
+  "Recruitment booth swag that looks thrown together",
+];
+
+const products = [
+  { name: "Hi-vis branded polos", image: "/images/contractors/product-1.webp" },
+  { name: "Safety-compliant outerwear", image: "/images/contractors/product-2.webp" },
+  { name: "Job-site hats and beanies", image: "/images/contractors/product-3.webp" },
+  { name: "Recruitment tees and bags", image: "/images/contractors/product-4.webp" },
+  { name: "Trade show banners", image: "/images/contractors/product-5.webp" },
+  { name: "Branded work pants", image: "/images/contractors/product-6.webp" },
+];
+---
+
+<Base
+  title="Custom Apparel for Contractors and Trades | AC Apparel Tampa FL"
+  description="Uniforms and recruitment swag for contractors. Hi-vis polos, branded outerwear, job-site hats, and booth gear. On your deadline or it ships free."
+  canonicalPath="/contractors"
+  ogImage="/images/contractors/hero.webp"
+>
+  <Hero
+    title="Uniforms and recruitment swag for contractors. Ready when your new hires start Monday."
+    subtitle="Hi-vis polos, branded outerwear, job-site hats, and recruitment booth gear. Built for the trades, shipped on your schedule."
+    ctaText="Get a Contractor Quote"
+    imageUrl="/images/contractors/hero.webp"
+  />
+
+  <PainBlock bullets={painBullets} />
+  <GuaranteeBlock />
+  <ProductGrid products={products} />
+  <HowItWorks />
+  <LeadForm source="contractors" />
+</Base>

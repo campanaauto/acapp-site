@@ -1,0 +1,243 @@
+---
+interface Props {
+  source: string;
+}
+
+const { source } = Astro.props;
+---
+
+<section id="quote" class="py-16 md:py-24 bg-slate-900">
+  <div class="max-w-2xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-3">Get a flat-rate quote in 24 hours.</h2>
+    <p class="text-slate-400 text-center mb-10">Tell us what you need. We'll send a mockup and a price, no obligation.</p>
+
+    <form
+      name="lead"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      action="/thanks"
+      id="lead-form"
+      class="space-y-5"
+      novalidate
+    >
+      <!-- Honeypot -->
+      <div class="hidden" aria-hidden="true">
+        <label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+      </div>
+
+      <!-- Hidden fields -->
+      <input type="hidden" name="form-name" value="lead" />
+      <input type="hidden" name="source" value={source} />
+      <input type="hidden" name="utm_source" id="utm_source" value="" />
+      <input type="hidden" name="utm_medium" id="utm_medium" value="" />
+      <input type="hidden" name="utm_campaign" id="utm_campaign" value="" />
+      <input type="hidden" name="utm_content" id="utm_content" value="" />
+      <input type="hidden" name="utm_term" id="utm_term" value="" />
+      <input type="hidden" name="submitted_at" id="submitted_at" value="" />
+
+      <!-- Full Name -->
+      <div>
+        <label for="name" class="block text-sm font-medium text-slate-300 mb-1">Full Name *</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="w-full px-4 py-3 rounded-lg bg-white text-slate-900 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          placeholder="Your full name"
+        />
+        <p class="text-red-400 text-sm mt-1 hidden" data-error="name">Please enter your name.</p>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <label for="company" class="block text-sm font-medium text-slate-300 mb-1">Company *</label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          required
+          class="w-full px-4 py-3 rounded-lg bg-white text-slate-900 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          placeholder="Company name"
+        />
+        <p class="text-red-400 text-sm mt-1 hidden" data-error="company">Please enter your company name.</p>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-slate-300 mb-1">Email *</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full px-4 py-3 rounded-lg bg-white text-slate-900 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          placeholder="you@company.com"
+        />
+        <p class="text-red-400 text-sm mt-1 hidden" data-error="email">Please enter a valid email address.</p>
+      </div>
+
+      <!-- Phone -->
+      <div>
+        <label for="phone" class="block text-sm font-medium text-slate-300 mb-1">Phone *</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          pattern="[\d\s\-\(\)\+]{7,}"
+          class="w-full px-4 py-3 rounded-lg bg-white text-slate-900 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          placeholder="(555) 123-4567"
+        />
+        <p class="text-red-400 text-sm mt-1 hidden" data-error="phone">Please enter a valid phone number.</p>
+      </div>
+
+      <!-- Deadline -->
+      <div>
+        <label for="deadline" class="block text-sm font-medium text-slate-300 mb-1">Deadline or Event Date</label>
+        <input
+          type="date"
+          id="deadline"
+          name="deadline"
+          class="w-full px-4 py-3 rounded-lg bg-white text-slate-900 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+        />
+      </div>
+
+      <!-- Estimated Quantity -->
+      <div>
+        <label for="quantity" class="block text-sm font-medium text-slate-300 mb-1">Estimated Quantity *</label>
+        <select
+          id="quantity"
+          name="quantity"
+          required
+          class="w-full px-4 py-3 rounded-lg bg-white text-slate-900 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+        >
+          <option value="">Select a range</option>
+          <option value="Under 50">Under 50</option>
+          <option value="50 to 250">50 to 250</option>
+          <option value="250 to 1000">250 to 1000</option>
+          <option value="1000+">1000+</option>
+        </select>
+        <p class="text-red-400 text-sm mt-1 hidden" data-error="quantity">Please select a quantity range.</p>
+      </div>
+
+      <!-- What do you need? -->
+      <fieldset>
+        <legend class="block text-sm font-medium text-slate-300 mb-2">What do you need? *</legend>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="flex items-center gap-2 text-white">
+            <input type="checkbox" name="needs" value="Apparel" class="w-4 h-4 rounded text-orange-500 focus:ring-orange-500" />
+            Apparel
+          </label>
+          <label class="flex items-center gap-2 text-white">
+            <input type="checkbox" name="needs" value="Promo" class="w-4 h-4 rounded text-orange-500 focus:ring-orange-500" />
+            Promo
+          </label>
+          <label class="flex items-center gap-2 text-white">
+            <input type="checkbox" name="needs" value="Print" class="w-4 h-4 rounded text-orange-500 focus:ring-orange-500" />
+            Print
+          </label>
+          <label class="flex items-center gap-2 text-white">
+            <input type="checkbox" name="needs" value="Not sure yet" class="w-4 h-4 rounded text-orange-500 focus:ring-orange-500" />
+            Not sure yet
+          </label>
+        </div>
+        <p class="text-red-400 text-sm mt-1 hidden" data-error="needs">Please select at least one option.</p>
+      </fieldset>
+
+      <!-- Notes -->
+      <div>
+        <label for="notes" class="block text-sm font-medium text-slate-300 mb-1">Notes</label>
+        <textarea
+          id="notes"
+          name="notes"
+          rows="4"
+          class="w-full px-4 py-3 rounded-lg bg-white text-slate-900 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+          placeholder="Tell us about your project, colors, quantities, or anything else."
+        ></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        id="submit-btn"
+        class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg py-4 rounded-lg transition-colors"
+      >
+        Get My Quote
+      </button>
+
+      <!-- Network error message -->
+      <p id="form-error" class="text-red-400 text-center hidden">
+        Submission failed. Call us directly at <a href="tel:+17724802284" class="underline">(772) 480-2284</a> or email <a href="mailto:info@acapp.us" class="underline">info@acapp.us</a>.
+      </p>
+    </form>
+  </div>
+</section>
+
+<script>
+  // Capture UTM params
+  const params = new URLSearchParams(window.location.search);
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((key) => {
+    const el = document.getElementById(key) as HTMLInputElement;
+    if (el && params.get(key)) {
+      el.value = params.get(key) || '';
+    }
+  });
+
+  const form = document.getElementById('lead-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  function showError(name: string) {
+    const el = form.querySelector(`[data-error="${name}"]`) as HTMLElement;
+    if (el) el.classList.remove('hidden');
+  }
+
+  function clearErrors() {
+    form.querySelectorAll('[data-error]').forEach((el) => el.classList.add('hidden'));
+    const formErr = document.getElementById('form-error');
+    if (formErr) formErr.classList.add('hidden');
+  }
+
+  form.addEventListener('submit', (e) => {
+    clearErrors();
+    let valid = true;
+
+    // Check required text fields
+    const requiredFields = ['name', 'company', 'email', 'phone', 'quantity'];
+    requiredFields.forEach((fieldName) => {
+      const input = form.querySelector(`[name="${fieldName}"]`) as HTMLInputElement | HTMLSelectElement;
+      if (input && !input.value.trim()) {
+        showError(fieldName);
+        valid = false;
+      } else if (input && !input.checkValidity()) {
+        showError(fieldName);
+        valid = false;
+      }
+    });
+
+    // Check at least one checkbox
+    const checkboxes = form.querySelectorAll('input[name="needs"]:checked');
+    if (checkboxes.length === 0) {
+      showError('needs');
+      valid = false;
+    }
+
+    if (!valid) {
+      e.preventDefault();
+      return;
+    }
+
+    // Set submitted_at
+    const submittedAt = document.getElementById('submitted_at') as HTMLInputElement;
+    if (submittedAt) submittedAt.value = new Date().toISOString();
+
+    // Disable button, re-enable after 5s as fallback
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Get My Quote';
+    }, 5000);
+  });
+</script>
