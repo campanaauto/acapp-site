@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><title>Form Detection</title></head>
+  <body>
+    <form name="lead" netlify netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input type="hidden" name="form-name" value="lead" />
+      <input type="hidden" name="source" />
+      <input type="hidden" name="utm_source" />
+      <input type="hidden" name="utm_medium" />
+      <input type="hidden" name="utm_campaign" />
+      <input type="hidden" name="utm_content" />
+      <input type="hidden" name="utm_term" />
+      <input type="hidden" name="submitted_at" />
+      <input type="text" name="name" />
+      <input type="text" name="company" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="date" name="deadline" />
+      <select name="quantity">
+        <option value="Under 50">Under 50</option>
+        <option value="50 to 250">50 to 250</option>
+        <option value="250 to 1000">250 to 1000</option>
+        <option value="1000+">1000+</option>
+      </select>
+      <input type="checkbox" name="needs" value="Apparel" />
+      <input type="checkbox" name="needs" value="Promo" />
+      <input type="checkbox" name="needs" value="Print" />
+      <input type="checkbox" name="needs" value="Not sure yet" />
+      <textarea name="notes"></textarea>
+    </form>
+  </body>
+</html>
