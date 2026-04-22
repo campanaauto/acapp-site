@@ -26,6 +26,11 @@ const canonicalUrl = `https://acapp.us${canonicalPath}`;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
 
+    <!-- Inter Variable from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -39,11 +44,14 @@ const canonicalUrl = `https://acapp.us${canonicalPath}`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`https://acapp.us${ogImage}`} />
   </head>
-  <body class="bg-white text-slate-700 font-sans">
+  <body class="bg-white text-slate-body font-sans antialiased">
     <Header />
     <main>
       <slot />
     </main>
     <Footer />
+    <script>
+      import '../scripts/scroll-reveal.js';
+    </script>
   </body>
 </html>

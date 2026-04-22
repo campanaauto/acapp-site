@@ -1,1 +1,65 @@
 @import "tailwindcss";
+
+@theme {
+  --color-charcoal: #1A1A1A;
+  --color-slate-body: #4A4A4A;
+  --color-accent: #D64B1E;
+  --color-accent-dark: #B8401A;
+  --color-offwhite: #FAFAF7;
+  --color-dark: #0F0F0F;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Scroll reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Trust ticker */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track {
+  animation: ticker 40s linear infinite;
+}
+
+/* Hero parallax */
+.hero-parallax {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* Scroll chevron pulse */
+@keyframes chevron-pulse {
+  0%, 100% { opacity: 0.6; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(6px); }
+}
+.chevron-pulse {
+  animation: chevron-pulse 2s ease-in-out infinite;
+}
+
+/* Use-case tile hover */
+.usecase-tile img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.usecase-tile:hover img {
+  transform: scale(1.05);
+}
+.usecase-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  pointer-events: none;
+}
+.usecase-tile:hover::after {
+  border-color: #D64B1E;
+}

@@ -1,11 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.astro';
-import TrustBar from '../components/TrustBar.astro';
-import ServicesGrid from '../components/ServicesGrid.astro';
 import GuaranteeBlock from '../components/GuaranteeBlock.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import VerticalTeaser from '../components/VerticalTeaser.astro';
 import LeadForm from '../components/LeadForm.astro';
 ---
 
@@ -14,17 +9,335 @@ import LeadForm from '../components/LeadForm.astro';
   description="Branded apparel, promotional products, and print for businesses. Mockup in 24 hours, flat-rate quotes. On your deadline or it ships free. Tampa, FL."
   canonicalPath=""
 >
-  <Hero
-    title="Branded apparel, promo, and print. On your deadline or it ships free."
-    subtitle="Tampa-based, serving businesses across the Southeast. Mockup in 24 hours. Flat-rate quotes."
-    ctaText="Get a Quote"
-    imageUrl="/images/homepage/hero.webp"
-  />
 
-  <TrustBar />
-  <ServicesGrid />
+  <!-- ============================================ -->
+  <!-- SECTION 1: HERO (full-bleed, dark overlay) -->
+  <!-- ============================================ -->
+  <section class="relative min-h-[90vh] flex items-end overflow-hidden -mt-16 md:-mt-18">
+    <!-- Background image with parallax -->
+    <div class="absolute inset-0">
+      <img
+        src="/images/homepage/hero.webp"
+        alt="Editorial close-up of freshly printed branded apparel"
+        class="hero-parallax w-full h-full object-cover scale-110"
+      />
+      <!-- Dark gradient overlay from bottom-left -->
+      <div class="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-transparent"></div>
+    </div>
+
+    <!-- Content bottom-left -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-20 md:pb-28 pt-40">
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-5">Tampa, FL</p>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tighter leading-[0.95] mb-6 max-w-4xl">
+        Branded apparel,<br /> promo, and print.
+      </h1>
+      <p class="text-xl md:text-2xl text-white/90 font-medium mb-3 max-w-2xl">
+        On your deadline or it ships free.
+      </p>
+      <p class="text-sm md:text-base text-white/50 mb-10 max-w-xl leading-relaxed">
+        Mockup in 24 hours. Flat-rate quotes. 7-day average turnaround.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#quote" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-bold text-base rounded-sm hover:bg-accent-dark transition-all duration-300">
+          Start a Project
+        </a>
+        <a href="#use-cases" class="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold text-base rounded-sm hover:bg-white hover:text-charcoal transition-all duration-300">
+          See Our Work
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 chevron-pulse">
+      <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 2: TRUST TICKER -->
+  <!-- ============================================ -->
+  <section class="bg-dark py-8 overflow-hidden">
+    <div class="flex whitespace-nowrap">
+      <div class="ticker-track flex items-center gap-0">
+        {[1, 2].map(() => (
+          <span class="flex items-center gap-0 text-white text-sm uppercase tracking-widest font-medium">
+            <span class="px-6">50,000+ UNITS SHIPPED IN 2025</span>
+            <span class="text-accent">·</span>
+            <span class="px-6">200+ BUSINESSES SERVED</span>
+            <span class="text-accent">·</span>
+            <span class="px-6">7-DAY AVERAGE TURNAROUND</span>
+            <span class="text-accent">·</span>
+            <span class="px-6">24-HOUR MOCKUPS</span>
+            <span class="text-accent">·</span>
+            <span class="px-6">FLAT-RATE QUOTES</span>
+            <span class="text-accent">·</span>
+            <span class="px-6">TAMPA, FL</span>
+            <span class="text-accent">·</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 3: WHAT WE ACTUALLY DO -->
+  <!-- ============================================ -->
+  <section class="py-24 md:py-32 bg-offwhite">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mb-16 md:mb-20" data-reveal>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-charcoal tracking-tight leading-tight">
+          We don't resell.<br class="hidden md:block" /> We print, stitch, and press.
+        </h2>
+      </div>
+
+      <!-- Capability 1 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center mb-20 md:mb-28" data-reveal>
+        <div class="overflow-hidden rounded-sm">
+          <img src="/images/homepage/craft-1.webp" alt="Squeegee pulling ink across a screen printing frame" class="w-full h-80 md:h-[28rem] object-cover" loading="lazy" />
+        </div>
+        <div>
+          <div class="w-10 h-0.5 bg-accent mb-6"></div>
+          <h3 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-4">Screen printing with water-based inks</h3>
+          <p class="text-slate-body text-base md:text-lg leading-relaxed">
+            Retail-quality finishes that feel soft from day one. Not the stiff plastisol your last vendor used.
+          </p>
+        </div>
+      </div>
+
+      <!-- Capability 2 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center mb-20 md:mb-28" data-reveal>
+        <div class="md:order-2 overflow-hidden rounded-sm">
+          <img src="/images/homepage/craft-2.webp" alt="Close-up of embroidered logo on a polo with visible thread detail" class="w-full h-80 md:h-[28rem] object-cover" loading="lazy" />
+        </div>
+        <div class="md:order-1">
+          <div class="w-10 h-0.5 bg-accent mb-6"></div>
+          <h3 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-4">Embroidery, up to 15,000 stitches</h3>
+          <p class="text-slate-body text-base md:text-lg leading-relaxed">
+            Polo logos, hats, structured pieces. Dense stitch counts for brands that want to look like they spent more.
+          </p>
+        </div>
+      </div>
+
+      <!-- Capability 3 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center" data-reveal>
+        <div class="overflow-hidden rounded-sm">
+          <img src="/images/homepage/craft-3.webp" alt="Digital press mid-print with paper sheets stacked" class="w-full h-80 md:h-[28rem] object-cover" loading="lazy" />
+        </div>
+        <div>
+          <div class="w-10 h-0.5 bg-accent mb-6"></div>
+          <h3 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-4">Full-color digital and print</h3>
+          <p class="text-slate-body text-base md:text-lg leading-relaxed">
+            Business cards, brochures, banners, signage. On press in Tampa, not outsourced to another state.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 4: THE GUARANTEE -->
+  <!-- ============================================ -->
   <GuaranteeBlock />
-  <HowItWorks />
-  <VerticalTeaser />
-  <LeadForm source="homepage" />
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 5: USE-CASE GALLERY -->
+  <!-- ============================================ -->
+  <section id="use-cases" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mb-12 md:mb-16" data-reveal>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-charcoal tracking-tight leading-tight mb-4">
+          Built for the moments that matter.
+        </h2>
+        <p class="text-lg text-slate-body leading-relaxed">
+          When the date won't move, the order can't be late.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6" data-reveal>
+        <!-- Tile 1: Grand Openings -->
+        <div class="usecase-tile relative overflow-hidden rounded-sm h-72 md:h-96 group cursor-pointer">
+          <img src="/images/homepage/usecase-1.webp" alt="Grand opening event with branded flags and ribbon" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-6 md:p-8">
+            <h3 class="text-2xl font-bold text-white mb-1">Grand Openings</h3>
+            <p class="text-white/70 text-sm">Ribbon cuts, lot flags, first-day swag. Ready for the crowd.</p>
+          </div>
+        </div>
+
+        <!-- Tile 2: New Hire Onboarding -->
+        <div class="usecase-tile relative overflow-hidden rounded-sm h-72 md:h-96 group cursor-pointer">
+          <img src="/images/homepage/usecase-2.webp" alt="Stacked folded uniforms and welcome kit" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-6 md:p-8">
+            <h3 class="text-2xl font-bold text-white mb-1">New Hire Onboarding</h3>
+            <p class="text-white/70 text-sm">Uniforms and welcome kits that show up before Monday.</p>
+          </div>
+        </div>
+
+        <!-- Tile 3: Customer Gifts -->
+        <div class="usecase-tile relative overflow-hidden rounded-sm h-72 md:h-96 group cursor-pointer">
+          <img src="/images/homepage/usecase-3.webp" alt="Branded tumbler and gift set flat-lay" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-6 md:p-8">
+            <h3 class="text-2xl font-bold text-white mb-1">Customer Gifts</h3>
+            <p class="text-white/70 text-sm">Thank-you tumblers, client kits, holiday sends. Branded, not boring.</p>
+          </div>
+        </div>
+
+        <!-- Tile 4: Trade Shows -->
+        <div class="usecase-tile relative overflow-hidden rounded-sm h-72 md:h-96 group cursor-pointer">
+          <img src="/images/homepage/usecase-4.webp" alt="Trade show booth with branded banners and uniformed staff" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-6 md:p-8">
+            <h3 class="text-2xl font-bold text-white mb-1">Trade Shows</h3>
+            <p class="text-white/70 text-sm">Booth gear, giveaways, and staff uniforms. All aligned, all on time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 6: HOW IT WORKS -->
+  <!-- ============================================ -->
+  <section class="py-24 md:py-32 bg-offwhite">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 relative" data-reveal>
+        <!-- Connecting line (desktop) -->
+        <div class="hidden md:block absolute top-14 left-[12.5%] right-[12.5%] h-px bg-charcoal/10"></div>
+
+        <!-- Step 1 -->
+        <div class="relative">
+          <p class="text-5xl font-extrabold text-accent mb-5">01</p>
+          <h3 class="text-xl font-bold text-charcoal tracking-tight mb-3">Tell us what you need</h3>
+          <p class="text-slate-body text-sm leading-relaxed mb-5">Quantity, deadline, and the general idea. No spec sheet required.</p>
+          <img src="/images/homepage/step-1.webp" alt="Laptop with design file open" class="w-full h-40 object-cover rounded-sm" loading="lazy" />
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative">
+          <p class="text-5xl font-extrabold text-accent mb-5">02</p>
+          <h3 class="text-xl font-bold text-charcoal tracking-tight mb-3">Mockup in 24 hours</h3>
+          <p class="text-slate-body text-sm leading-relaxed mb-5">Approve it, tweak it, or scrap it. We work until you're happy.</p>
+          <img src="/images/homepage/step-2.webp" alt="Hands holding a printed proof for review" class="w-full h-40 object-cover rounded-sm" loading="lazy" />
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative">
+          <p class="text-5xl font-extrabold text-accent mb-5">03</p>
+          <h3 class="text-xl font-bold text-charcoal tracking-tight mb-3">We print in Tampa</h3>
+          <p class="text-slate-body text-sm leading-relaxed mb-5">In-house production. Real shop. Real people.</p>
+          <img src="/images/homepage/step-3.webp" alt="Press in motion producing printed materials" class="w-full h-40 object-cover rounded-sm" loading="lazy" />
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative">
+          <p class="text-5xl font-extrabold text-accent mb-5">04</p>
+          <h3 class="text-xl font-bold text-charcoal tracking-tight mb-3">Ships on your date</h3>
+          <p class="text-slate-body text-sm leading-relaxed mb-5">Tracking in your inbox. On time or it ships free.</p>
+          <img src="/images/homepage/step-4.webp" alt="Packed boxes with shipping labels ready to ship" class="w-full h-40 object-cover rounded-sm" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 7: THREE-VERTICAL FEATURE -->
+  <!-- ============================================ -->
+  <section class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mb-16 md:mb-20" data-reveal>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-charcoal tracking-tight leading-tight">
+          Who we're built for.
+        </h2>
+      </div>
+
+      <!-- Vertical 1: Dealerships -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center mb-20 md:mb-28" data-reveal>
+        <div class="overflow-hidden rounded-sm">
+          <img src="/images/homepage/vertical-1.webp" alt="Polished dealership service advisor in branded polo" class="w-full h-72 md:h-[26rem] object-cover" loading="lazy" />
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4">Dealerships</p>
+          <h3 class="text-3xl md:text-4xl font-bold text-charcoal tracking-tight mb-4">For the grand opening that can't slip.</h3>
+          <p class="text-slate-body text-base md:text-lg leading-relaxed mb-6">
+            Service polos, lot flags, gift kits, and event swag for auto dealers across the Southeast.
+          </p>
+          <a href="/dealerships" class="text-accent font-semibold text-sm hover:underline transition-all duration-300">See how &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Vertical 2: Contractors -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center mb-20 md:mb-28" data-reveal>
+        <div class="md:order-2 overflow-hidden rounded-sm">
+          <img src="/images/homepage/vertical-2.webp" alt="Contractor on job site wearing branded hi-vis polo" class="w-full h-72 md:h-[26rem] object-cover" loading="lazy" />
+        </div>
+        <div class="md:order-1">
+          <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4">Contractors</p>
+          <h3 class="text-3xl md:text-4xl font-bold text-charcoal tracking-tight mb-4">For the crew starting Monday.</h3>
+          <p class="text-slate-body text-base md:text-lg leading-relaxed mb-6">
+            Hi-vis uniforms, recruitment swag, and trade show gear built for the trades.
+          </p>
+          <a href="/contractors" class="text-accent font-semibold text-sm hover:underline transition-all duration-300">See how &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Vertical 3: Franchise -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center" data-reveal>
+        <div class="overflow-hidden rounded-sm">
+          <img src="/images/homepage/vertical-3.webp" alt="Franchise employee in branded tee in bright retail environment" class="w-full h-72 md:h-[26rem] object-cover" loading="lazy" />
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4">Franchise</p>
+          <h3 class="text-3xl md:text-4xl font-bold text-charcoal tracking-tight mb-4">For the opening corporate can't help you with.</h3>
+          <p class="text-slate-body text-base md:text-lg leading-relaxed mb-6">
+            Brand-compliant merch, ordered direct, shipped when you need it.
+          </p>
+          <a href="/franchise" class="text-accent font-semibold text-sm hover:underline transition-all duration-300">See how &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 8: FINAL CTA / FORM -->
+  <!-- ============================================ -->
+  <section id="quote" class="bg-dark py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+        <!-- Left column -->
+        <div class="flex flex-col justify-center" data-reveal>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
+            Start a project.
+          </h2>
+          <p class="text-lg text-white/50 leading-relaxed mb-10">
+            Get a flat-rate quote inside 24 hours.
+          </p>
+          <div class="space-y-3">
+            <p class="text-white/70">
+              <a href="tel:+17724802284" class="text-2xl font-bold text-white hover:text-accent transition-colors duration-300">(772) 480-2284</a>
+            </p>
+            <p>
+              <a href="mailto:info@acapp.us" class="text-white/50 hover:text-accent transition-colors duration-300">info@acapp.us</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Right column: form -->
+        <div data-reveal>
+          <LeadForm source="homepage" />
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Base>

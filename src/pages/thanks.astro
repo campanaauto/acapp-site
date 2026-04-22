@@ -7,39 +7,44 @@ import Base from '../layouts/Base.astro';
   description="We received your quote request. A team member will contact you within 24 hours with next steps and a flat-rate quote."
   canonicalPath="/thanks"
 >
-  <section class="py-16 md:py-24">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6">Got it. We'll be in touch inside 24 hours.</h1>
-      <p class="text-lg md:text-xl text-slate-600 mb-10">A team member will call or email you with next steps and a flat-rate quote.</p>
+  <section class="py-24 md:py-32">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-6" data-reveal>Request received</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-charcoal tracking-tight leading-tight mb-6" data-reveal>
+        Got it. We'll be in touch inside 24 hours.
+      </h1>
+      <p class="text-lg text-slate-body leading-relaxed mb-12" data-reveal>
+        A team member will call or email you with next steps and a flat-rate quote.
+      </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
-        <a href="tel:+17724802284" class="text-2xl md:text-3xl font-bold text-orange-500 hover:text-orange-600 transition-colors">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16" data-reveal>
+        <a href="tel:+17724802284" class="text-2xl md:text-3xl font-extrabold text-accent hover:text-accent-dark transition-colors duration-300">
           (772) 480-2284
         </a>
-        <span class="hidden sm:block text-slate-300">|</span>
-        <p class="text-slate-600">
-          Prefer email? <a href="mailto:info@acapp.us" class="text-orange-500 hover:text-orange-600 font-medium transition-colors">info@acapp.us</a>
+        <span class="hidden sm:block text-charcoal/20">|</span>
+        <p class="text-slate-body">
+          Prefer email? <a href="mailto:info@acapp.us" class="text-accent hover:text-accent-dark font-medium transition-colors duration-300">info@acapp.us</a>
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-        <img src="/images/thanks/process-1.webp" alt="Printing press in motion producing branded apparel" class="w-full h-64 object-cover rounded-xl shadow-md" loading="lazy" />
-        <img src="/images/thanks/process-2.webp" alt="Finished products packed and ready for shipping" class="w-full h-64 object-cover rounded-xl shadow-md" loading="lazy" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20" data-reveal>
+        <img src="/images/thanks/process-1.webp" alt="Printing press in motion producing branded apparel" class="w-full h-64 object-cover rounded-sm" loading="lazy" />
+        <img src="/images/thanks/process-2.webp" alt="Finished products packed and ready for shipping" class="w-full h-64 object-cover rounded-sm" loading="lazy" />
       </div>
 
-      <h2 class="text-2xl font-bold text-slate-900 mb-8">See how we work with your industry</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="/dealerships" class="block bg-slate-50 rounded-lg p-6 hover:bg-slate-100 transition-colors">
-          <h3 class="font-bold text-slate-900 mb-2">Auto Dealerships</h3>
-          <p class="text-sm text-slate-600">See how we work with dealerships on uniforms, lot flags, and event swag.</p>
+      <h2 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-10" data-reveal>See how we work with your industry</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-reveal>
+        <a href="/dealerships" class="block bg-offwhite rounded-sm p-8 hover:bg-charcoal/5 transition-colors duration-300 text-left">
+          <h3 class="font-bold text-charcoal mb-2">Auto Dealerships</h3>
+          <p class="text-sm text-slate-body leading-relaxed">Uniforms, lot flags, and event swag.</p>
         </a>
-        <a href="/contractors" class="block bg-slate-50 rounded-lg p-6 hover:bg-slate-100 transition-colors">
-          <h3 class="font-bold text-slate-900 mb-2">Construction and Trades</h3>
-          <p class="text-sm text-slate-600">See how we work with contractors on hi-vis gear and recruitment swag.</p>
+        <a href="/contractors" class="block bg-offwhite rounded-sm p-8 hover:bg-charcoal/5 transition-colors duration-300 text-left">
+          <h3 class="font-bold text-charcoal mb-2">Construction &amp; Trades</h3>
+          <p class="text-sm text-slate-body leading-relaxed">Hi-vis gear and recruitment swag.</p>
         </a>
-        <a href="/franchise" class="block bg-slate-50 rounded-lg p-6 hover:bg-slate-100 transition-colors">
-          <h3 class="font-bold text-slate-900 mb-2">Franchise Owners</h3>
-          <p class="text-sm text-slate-600">See how we work with franchise owners on brand-compliant merch.</p>
+        <a href="/franchise" class="block bg-offwhite rounded-sm p-8 hover:bg-charcoal/5 transition-colors duration-300 text-left">
+          <h3 class="font-bold text-charcoal mb-2">Franchise Owners</h3>
+          <p class="text-sm text-slate-body leading-relaxed">Brand-compliant merch, no portal headaches.</p>
         </a>
       </div>
     </div>
