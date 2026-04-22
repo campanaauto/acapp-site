@@ -30,22 +30,22 @@ const filters = ['All', 'Dealerships', 'Contractors', 'Franchise', 'Nonprofits',
   <section class="py-20 md:py-28">
     <div class="max-w-7xl mx-auto px-6">
       <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4" data-reveal>Our Work</p>
-      <h1 class="text-5xl md:text-7xl font-extrabold text-charcoal tracking-tighter leading-[0.95] mb-6 max-w-4xl" data-reveal>
+      <h1 class="text-5xl md:text-7xl font-bold font-display text-ink tracking-tighter leading-[0.95] mb-6 max-w-4xl" data-reveal>
         Real projects.<br />Real deadlines.<br />Delivered.
       </h1>
-      <p class="text-lg text-slate-body leading-relaxed max-w-2xl" data-reveal>
+      <p class="text-lg text-graphite leading-relaxed max-w-2xl" data-reveal>
         A look at what we're printing, stitching, and pressing across the Southeast.
       </p>
     </div>
   </section>
 
   <!-- Filter bar -->
-  <section class="border-b border-charcoal/10">
+  <section class="border-b border-ink/10">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex gap-2 overflow-x-auto py-4 scroll-snap-x" id="filter-bar">
         {filters.map((f, i) => (
           <button
-            class={`filter-btn shrink-0 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-200 cursor-pointer ${i === 0 ? 'active border-accent text-accent' : 'border-charcoal/15 text-slate-body hover:border-accent hover:text-accent'}`}
+            class={`filter-btn shrink-0 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-200 cursor-pointer ${i === 0 ? 'active border-accent text-accent' : 'border-ink/15 text-graphite hover:border-accent hover:text-accent'}`}
             data-filter={f === 'All' ? 'all' : f.toUpperCase().replace('S', '').replace('NONPROFITS', 'NONPROFIT').replace('EVENTS', 'EVENT').replace('DEALERSHIP', 'DEALERSHIP').replace('CONTRACTOR', 'CONTRACTOR').replace('FRANCHISE', 'FRANCHISE')}
           >
             {f}
@@ -61,12 +61,12 @@ const filters = ['All', 'Dealerships', 'Contractors', 'Franchise', 'Nonprofits',
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid">
         {projects.map((p) => (
           <div class="project-tile group" data-category={p.category} data-reveal>
-            <div class="overflow-hidden rounded-sm mb-4">
+            <div class="overflow-hidden mb-4">
               <img src={p.image} alt={p.title} class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             </div>
             <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-2">{p.category}</p>
-            <h3 class="text-lg font-bold text-charcoal mb-1">{p.title}</h3>
-            <p class="text-sm text-slate-body leading-relaxed mb-3">{p.desc}</p>
+            <h3 class="text-lg font-bold font-display text-ink mb-1">{p.title}</h3>
+            <p class="text-sm text-graphite leading-relaxed mb-3">{p.desc}</p>
             <a href="/contact" class="text-sm text-accent font-medium hover:underline">Similar project? Get a quote &rarr;</a>
           </div>
         ))}
@@ -75,11 +75,11 @@ const filters = ['All', 'Dealerships', 'Contractors', 'Franchise', 'Nonprofits',
   </section>
 
   <!-- CTA -->
-  <section id="quote" class="bg-dark py-24 md:py-32">
+  <section id="quote" class="bg-ink py-24 md:py-32">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         <div class="flex flex-col justify-center" data-reveal>
-          <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">Have a project like these?</h2>
+          <h2 class="text-4xl md:text-5xl font-bold font-display text-white tracking-tight leading-tight mb-6">Have a project like these?</h2>
           <p class="text-lg text-white/50 leading-relaxed mb-10">Tell us what you need. We'll send a mockup and a price within 24 hours.</p>
           <div class="space-y-3">
             <p><a href="mailto:info@acapp.us" class="text-xl font-bold text-white hover:text-accent transition-colors duration-300">info@acapp.us</a></p>

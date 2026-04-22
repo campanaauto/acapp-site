@@ -1,24 +1,34 @@
 @import "tailwindcss";
 
 @theme {
-  --color-charcoal: #1A1A1A;
-  --color-slate-body: #4A4A4A;
-  --color-accent: #D64B1E;
-  --color-accent-dark: #B8401A;
-  --color-offwhite: #FAFAF7;
-  --color-dark: #0F0F0F;
+  --color-ink: #0A0A0A;
+  --color-paper: #FAFAF5;
+  --color-graphite: #3A3A38;
+  --color-stone: #8A857E;
+  --color-accent: #8B2E1F;
+  --color-accent-dark: #6B2318;
+  --color-soft-border: #EAE6DE;
+  --font-display: 'Fraunces', Georgia, serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* Scroll reveal */
+/* Scroll reveal: subtle, 600ms ease-out */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(1.5rem);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(1rem);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 [data-reveal].revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Image hover: subtle scale */
+.img-hover img {
+  transition: transform 0.7s ease;
+}
+.img-hover:hover img {
+  transform: scale(1.02);
 }
 
 /* Trust ticker */
@@ -30,61 +40,11 @@
   animation: ticker 40s linear infinite;
 }
 
-/* Hero parallax */
-.hero-parallax {
-  will-change: transform;
-  transition: transform 0.1s linear;
-}
-
-/* Scroll chevron pulse */
-@keyframes chevron-pulse {
-  0%, 100% { opacity: 0.6; transform: translateY(0); }
-  50% { opacity: 1; transform: translateY(6px); }
-}
-.chevron-pulse {
-  animation: chevron-pulse 2s ease-in-out infinite;
-}
-
-/* Use-case tile hover */
-.usecase-tile img {
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.usecase-tile:hover img {
-  transform: scale(1.05);
-}
-.usecase-tile::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 2px solid transparent;
-  transition: border-color 0.3s ease;
-  pointer-events: none;
-}
-.usecase-tile:hover::after {
-  border-color: #D64B1E;
-}
-
-/* Category tile hover */
-.cat-tile {
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-.cat-tile:hover {
-  transform: scale(1.02);
-  border-color: #D64B1E;
-}
-.cat-tile .cat-cta {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.cat-tile:hover .cat-cta {
-  opacity: 1;
-}
-
 /* Quick-quote widget slide */
 .qq-panel {
   transform: translateY(1rem) scale(0.95);
   opacity: 0;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease;
   pointer-events: none;
 }
 .qq-panel.open {
@@ -93,17 +53,9 @@
   pointer-events: auto;
 }
 
-/* Nav dropdown */
-.nav-dropdown {
-  opacity: 0;
-  transform: translateY(4px);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-.nav-group:hover .nav-dropdown {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+/* Product quote modal */
+.pq-backdrop {
+  backdrop-filter: blur(2px);
 }
 
 /* Mobile safe area */
@@ -111,16 +63,7 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* Horizontal scroll snap for mobile category rail */
-.scroll-snap-x {
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-.scroll-snap-x > * {
-  scroll-snap-align: start;
-}
-
-/* Sticky sidebar fade-in */
+/* Sticky sidebar */
 .sticky-sidebar {
   opacity: 0;
   transform: translateX(1rem);
@@ -143,44 +86,8 @@
   max-height: 20rem;
 }
 
-/* Project filter active state */
+/* Project filter */
 .filter-btn.active {
-  color: #D64B1E;
-  border-color: #D64B1E;
-}
-
-/* Product quote modal */
-.pq-backdrop {
-  backdrop-filter: blur(2px);
-}
-
-/* Product card hover */
-.product-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-}
-.product-card .pricing-btn {
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-.product-card:hover .pricing-btn {
-  background-color: #D64B1E;
-  color: white;
-  border-color: #D64B1E;
-}
-
-/* Kit card hover */
-.kit-card {
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-.kit-card:hover {
-  transform: translateY(-2px);
-  border-color: #D64B1E;
-}
-
-/* Star rating color */
-.star-orange {
-  color: #D64B1E;
+  color: #8B2E1F;
+  border-color: #8B2E1F;
 }

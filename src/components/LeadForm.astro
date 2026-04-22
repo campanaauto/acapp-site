@@ -5,6 +5,8 @@ interface Props {
 }
 
 const { source, compact = false } = Astro.props;
+const inputClass = 'w-full h-14 px-4 bg-transparent text-white border border-white/20 focus:outline-none focus:border-accent transition-colors duration-200 placeholder:text-white/30 text-sm font-sans';
+const labelClass = 'block text-xs font-medium uppercase tracking-[0.15em] text-white/50 mb-2 font-sans';
 ---
 
 <form
@@ -14,15 +16,13 @@ const { source, compact = false } = Astro.props;
   netlify-honeypot="bot-field"
   action="/thanks"
   id="lead-form"
-  class={compact ? 'space-y-4' : 'space-y-6'}
+  class={compact ? 'space-y-4' : 'space-y-5'}
   novalidate
 >
-  <!-- Honeypot -->
   <div class="hidden" aria-hidden="true">
     <label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
   </div>
 
-  <!-- Hidden fields -->
   <input type="hidden" name="form-name" value="lead" />
   <input type="hidden" name="source" value={source} />
   <input type="hidden" name="utm_source" id="utm_source" value="" />
@@ -34,128 +34,109 @@ const { source, compact = false } = Astro.props;
 
   {compact ? (
     <>
-      {/* Compact mode: fewer fields */}
       <div>
-        <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-1.5">Full Name *</label>
-        <input type="text" id="name" name="name" required class="w-full h-12 px-4 rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 placeholder:text-charcoal/30 text-sm" placeholder="Your full name" />
-        <p class="text-accent text-sm mt-1 hidden" data-error="name">Please enter your name.</p>
+        <label for="name" class={labelClass}>Name</label>
+        <input type="text" id="name" name="name" required class={inputClass} placeholder="Your full name" />
+        <p class="text-accent text-xs mt-1 hidden" data-error="name">Please enter your name.</p>
       </div>
       <div>
-        <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-1.5">Email *</label>
-        <input type="email" id="email" name="email" required class="w-full h-12 px-4 rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 placeholder:text-charcoal/30 text-sm" placeholder="you@company.com" />
-        <p class="text-accent text-sm mt-1 hidden" data-error="email">Please enter a valid email.</p>
+        <label for="email" class={labelClass}>Email</label>
+        <input type="email" id="email" name="email" required class={inputClass} placeholder="you@company.com" />
+        <p class="text-accent text-xs mt-1 hidden" data-error="email">Please enter a valid email.</p>
       </div>
       <div>
-        <label for="phone" class="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-1.5">Cell phone for text updates *</label>
-        <input type="tel" id="phone" name="phone" required pattern="[\d\s\-\(\)\+]{7,}" class="w-full h-12 px-4 rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 placeholder:text-charcoal/30 text-sm" placeholder="(555) 123-4567" />
-        <p class="text-accent text-sm mt-1 hidden" data-error="phone">Please enter a valid phone number.</p>
+        <label for="phone" class={labelClass}>Phone</label>
+        <input type="tel" id="phone" name="phone" required pattern="[\d\s\-\(\)\+]{7,}" class={inputClass} placeholder="(555) 123-4567" />
+        <p class="text-accent text-xs mt-1 hidden" data-error="phone">Please enter a valid phone number.</p>
       </div>
       <div>
-        <label for="quantity" class="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-1.5">Estimated Quantity *</label>
-        <select id="quantity" name="quantity" required class="w-full h-12 px-4 rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 text-sm">
+        <label for="quantity" class={labelClass}>Quantity</label>
+        <select id="quantity" name="quantity" required class={inputClass}>
           <option value="">Select a range</option>
           <option value="Under 50">Under 50</option>
           <option value="50 to 250">50 to 250</option>
-          <option value="250 to 1000">250 to 1000</option>
-          <option value="1000+">1000+</option>
+          <option value="250 to 1000">250 to 1,000</option>
+          <option value="1000+">1,000+</option>
         </select>
-        <p class="text-accent text-sm mt-1 hidden" data-error="quantity">Please select a quantity range.</p>
+        <p class="text-accent text-xs mt-1 hidden" data-error="quantity">Please select a quantity range.</p>
       </div>
-      {/* Hidden fields for compact mode compatibility */}
       <input type="hidden" name="company" value="" />
       <input type="hidden" name="deadline" value="" />
       <input type="hidden" name="needs" value="" />
       <input type="hidden" name="notes" value="" />
-      <button type="submit" id="submit-btn" class="w-full bg-accent hover:bg-accent-dark text-white font-bold text-base py-3.5 rounded-sm transition-all duration-300 cursor-pointer">
-        Get My Quote
+      <button type="submit" id="submit-btn" class="w-full bg-accent text-white font-medium text-sm py-3.5 tracking-wide uppercase hover:bg-accent-dark transition-colors duration-300 cursor-pointer">
+        Request quote
       </button>
-      <p class="text-white/40 text-xs">We respond inside 24 hours.</p>
     </>
   ) : (
     <>
-      {/* Full mode */}
       <div>
-        <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">Full Name *</label>
-        <input type="text" id="name" name="name" required class="w-full h-14 px-4 rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 placeholder:text-charcoal/30" placeholder="Your full name" />
-        <p class="text-accent text-sm mt-1.5 hidden" data-error="name">Please enter your name.</p>
+        <label for="name" class={labelClass}>Name</label>
+        <input type="text" id="name" name="name" required class={inputClass} placeholder="Your full name" />
+        <p class="text-accent text-xs mt-1.5 hidden" data-error="name">Please enter your name.</p>
       </div>
       <div>
-        <label for="company" class="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">Company *</label>
-        <input type="text" id="company" name="company" required class="w-full h-14 px-4 rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 placeholder:text-charcoal/30" placeholder="Company name" />
-        <p class="text-accent text-sm mt-1.5 hidden" data-error="company">Please enter your company name.</p>
+        <label for="company" class={labelClass}>Company</label>
+        <input type="text" id="company" name="company" required class={inputClass} placeholder="Company name" />
+        <p class="text-accent text-xs mt-1.5 hidden" data-error="company">Please enter your company.</p>
       </div>
       <div>
-        <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">Email *</label>
-        <input type="email" id="email" name="email" required class="w-full h-14 px-4 rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 placeholder:text-charcoal/30" placeholder="you@company.com" />
-        <p class="text-accent text-sm mt-1.5 hidden" data-error="email">Please enter a valid email address.</p>
+        <label for="email" class={labelClass}>Email</label>
+        <input type="email" id="email" name="email" required class={inputClass} placeholder="you@company.com" />
+        <p class="text-accent text-xs mt-1.5 hidden" data-error="email">Please enter a valid email.</p>
       </div>
       <div>
-        <label for="phone" class="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">Cell phone for text updates *</label>
-        <input type="tel" id="phone" name="phone" required pattern="[\d\s\-\(\)\+]{7,}" class="w-full h-14 px-4 rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 placeholder:text-charcoal/30" placeholder="(555) 123-4567" />
-        <p class="text-accent text-sm mt-1.5 hidden" data-error="phone">Please enter a valid phone number.</p>
+        <label for="phone" class={labelClass}>Phone</label>
+        <input type="tel" id="phone" name="phone" required pattern="[\d\s\-\(\)\+]{7,}" class={inputClass} placeholder="(555) 123-4567" />
+        <p class="text-accent text-xs mt-1.5 hidden" data-error="phone">Please enter a valid phone number.</p>
       </div>
       <div>
-        <label for="deadline" class="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">Deadline or Event Date</label>
-        <input type="date" id="deadline" name="deadline" class="w-full h-14 px-4 rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300" />
+        <label for="deadline" class={labelClass}>Deadline</label>
+        <input type="date" id="deadline" name="deadline" class={inputClass} />
       </div>
       <div>
-        <label for="quantity" class="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">Estimated Quantity *</label>
-        <select id="quantity" name="quantity" required class="w-full h-14 px-4 rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300">
+        <label for="quantity" class={labelClass}>Quantity</label>
+        <select id="quantity" name="quantity" required class={inputClass}>
           <option value="">Select a range</option>
           <option value="Under 50">Under 50</option>
           <option value="50 to 250">50 to 250</option>
-          <option value="250 to 1000">250 to 1000</option>
-          <option value="1000+">1000+</option>
+          <option value="250 to 1000">250 to 1,000</option>
+          <option value="1000+">1,000+</option>
         </select>
-        <p class="text-accent text-sm mt-1.5 hidden" data-error="quantity">Please select a quantity range.</p>
+        <p class="text-accent text-xs mt-1.5 hidden" data-error="quantity">Please select a quantity range.</p>
       </div>
       <fieldset>
-        <legend class="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-3">What do you need? *</legend>
-        <div class="grid grid-cols-2 gap-3">
-          <label class="flex items-center gap-3 text-white/80 text-sm cursor-pointer">
-            <input type="checkbox" name="needs" value="Apparel" class="w-4 h-4 rounded-sm text-accent focus:ring-accent accent-accent" />
-            Apparel
-          </label>
-          <label class="flex items-center gap-3 text-white/80 text-sm cursor-pointer">
-            <input type="checkbox" name="needs" value="Promo" class="w-4 h-4 rounded-sm text-accent focus:ring-accent accent-accent" />
-            Promo
-          </label>
-          <label class="flex items-center gap-3 text-white/80 text-sm cursor-pointer">
-            <input type="checkbox" name="needs" value="Print" class="w-4 h-4 rounded-sm text-accent focus:ring-accent accent-accent" />
-            Print
-          </label>
-          <label class="flex items-center gap-3 text-white/80 text-sm cursor-pointer">
-            <input type="checkbox" name="needs" value="Not sure yet" class="w-4 h-4 rounded-sm text-accent focus:ring-accent accent-accent" />
-            Not sure yet
-          </label>
+        <legend class={labelClass}>What do you need?</legend>
+        <div class="grid grid-cols-2 gap-3 mt-1">
+          {['Apparel', 'Promo', 'Print', 'Not sure yet'].map((need) => (
+            <label class="flex items-center gap-3 text-white/70 text-sm cursor-pointer font-sans">
+              <input type="checkbox" name="needs" value={need} class="w-4 h-4 accent-accent" />
+              {need}
+            </label>
+          ))}
         </div>
-        <p class="text-accent text-sm mt-1.5 hidden" data-error="needs">Please select at least one option.</p>
+        <p class="text-accent text-xs mt-1.5 hidden" data-error="needs">Please select at least one.</p>
       </fieldset>
       <div>
-        <label for="notes" class="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">Notes</label>
-        <textarea id="notes" name="notes" rows="4" class="w-full px-4 py-3 rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 placeholder:text-charcoal/30" placeholder="Tell us about your project, colors, quantities, or anything else."></textarea>
+        <label for="notes" class={labelClass}>Notes</label>
+        <textarea id="notes" name="notes" rows="3" class="w-full px-4 py-3 bg-transparent text-white border border-white/20 focus:outline-none focus:border-accent transition-colors duration-200 placeholder:text-white/30 text-sm font-sans" placeholder="Colors, quantities, anything helpful."></textarea>
       </div>
-      <button type="submit" id="submit-btn" class="w-full md:w-auto md:px-12 bg-accent hover:bg-accent-dark text-white font-bold text-lg py-4 rounded-sm transition-all duration-300 cursor-pointer">
-        Get My Quote
+      <button type="submit" id="submit-btn" class="w-full md:w-auto md:px-12 bg-accent text-white font-medium text-sm py-4 tracking-wide uppercase hover:bg-accent-dark transition-colors duration-300 cursor-pointer">
+        Request quote
       </button>
-      <p class="text-white/40 text-sm">We respond inside 24 hours.</p>
     </>
   )}
 
-  <!-- Network error message -->
-  <p id="form-error" class="text-accent text-center hidden">
+  <p id="form-error" class="text-accent text-center text-sm hidden">
     Submission failed. Text us at <a href="sms:+17724802284" class="underline">(772) 480-2284</a> or email <a href="mailto:info@acapp.us" class="underline">info@acapp.us</a>.
   </p>
 </form>
 
 <script>
-  // Capture UTM params
   const params = new URLSearchParams(window.location.search);
   ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((key) => {
     const el = document.getElementById(key) as HTMLInputElement;
-    if (el && params.get(key)) {
-      el.value = params.get(key) || '';
-    }
+    if (el && params.get(key)) el.value = params.get(key) || '';
   });
 
   const form = document.getElementById('lead-form') as HTMLFormElement;
@@ -168,55 +149,33 @@ const { source, compact = false } = Astro.props;
       const input = form.querySelector(`[name="${name}"]`) as HTMLElement;
       if (input) input.classList.add('!border-accent');
     }
-
     function clearErrors() {
       form.querySelectorAll('[data-error]').forEach((el) => el.classList.add('hidden'));
       form.querySelectorAll('.\\!border-accent').forEach((el) => el.classList.remove('!border-accent'));
-      const formErr = document.getElementById('form-error');
-      if (formErr) formErr.classList.add('hidden');
+      document.getElementById('form-error')?.classList.add('hidden');
     }
-
     form.addEventListener('submit', (e) => {
       clearErrors();
       let valid = true;
-
-      const requiredFields = form.dataset.compact
-        ? ['name', 'email', 'phone', 'quantity']
-        : ['name', 'company', 'email', 'phone', 'quantity'];
-
-      requiredFields.forEach((fieldName) => {
-        const input = form.querySelector(`[name="${fieldName}"]`) as HTMLInputElement | HTMLSelectElement;
-        if (input && input.type !== 'hidden' && !input.value.trim()) {
-          showError(fieldName);
-          valid = false;
-        } else if (input && input.type !== 'hidden' && !input.checkValidity()) {
-          showError(fieldName);
-          valid = false;
+      const fields = form.querySelectorAll('input[name="needs"][type="checkbox"]').length > 0
+        ? ['name', 'company', 'email', 'phone', 'quantity']
+        : ['name', 'email', 'phone', 'quantity'];
+      fields.forEach((f) => {
+        const input = form.querySelector(`[name="${f}"]`) as HTMLInputElement | HTMLSelectElement;
+        if (input && input.type !== 'hidden' && (!input.value.trim() || !input.checkValidity())) {
+          showError(f); valid = false;
         }
       });
-
-      // Check checkboxes only in full mode
-      const checkboxes = form.querySelectorAll('input[name="needs"][type="checkbox"]:checked');
-      const hasCheckboxes = form.querySelectorAll('input[name="needs"][type="checkbox"]').length > 0;
-      if (hasCheckboxes && checkboxes.length === 0) {
-        showError('needs');
-        valid = false;
+      const cbs = form.querySelectorAll('input[name="needs"][type="checkbox"]:checked');
+      if (form.querySelectorAll('input[name="needs"][type="checkbox"]').length > 0 && cbs.length === 0) {
+        showError('needs'); valid = false;
       }
-
-      if (!valid) {
-        e.preventDefault();
-        return;
-      }
-
-      const submittedAt = document.getElementById('submitted_at') as HTMLInputElement;
-      if (submittedAt) submittedAt.value = new Date().toISOString();
-
+      if (!valid) { e.preventDefault(); return; }
+      const ts = document.getElementById('submitted_at') as HTMLInputElement;
+      if (ts) ts.value = new Date().toISOString();
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Get My Quote';
-      }, 5000);
+      setTimeout(() => { submitBtn.disabled = false; submitBtn.textContent = 'Request quote'; }, 5000);
     });
   }
 </script>

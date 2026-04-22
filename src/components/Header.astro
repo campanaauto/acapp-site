@@ -1,128 +1,51 @@
----
-const shopItems = [
-  { label: 'Apparel', desc: 'T-shirts, Polos, Hoodies, Outerwear', href: '#', tbd: true },
-  { label: 'Headwear', desc: 'Caps, Beanies, Visors', href: '#', tbd: true },
-  { label: 'Drinkware', desc: 'Tumblers, Water Bottles, Mugs', href: '#', tbd: true },
-  { label: 'Bags', desc: 'Totes, Backpacks, Drawstring', href: '#', tbd: true },
-  { label: 'Print', desc: 'Business Cards, Brochures, Flyers', href: '#', tbd: true },
-  { label: 'Signage', desc: 'Banners, Yard Signs, Stickers', href: '#', tbd: true },
-];
-/* TODO: Shop category pages at /shop/[category] not yet built */
-
-const solutionItems = [
-  { label: 'Dealerships', href: '/dealerships' },
-  { label: 'Contractors', href: '/contractors' },
-  { label: 'Franchise', href: '/franchise' },
-  { label: 'Nonprofits', href: '#', tbd: true },
-  { label: 'Events', href: '#', tbd: true },
-];
-/* TODO: /nonprofits and /events pages not yet built */
----
-
-<header class="fixed top-9 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-charcoal/5 transition-shadow duration-300" id="main-header">
+<header class="fixed top-9 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-soft-border transition-shadow duration-300" id="main-header">
   <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-14 lg:h-16">
-    <a href="/" class="text-lg font-extrabold text-charcoal tracking-tighter uppercase">AC Apparel</a>
+    <a href="/" class="font-display text-xl font-bold text-ink tracking-tight">AC Apparel</a>
 
-    <!-- Desktop nav -->
-    <nav class="hidden lg:flex items-center gap-6">
-      <!-- SHOP dropdown -->
-      <div class="nav-group relative">
-        <button class="text-sm font-medium text-slate-body hover:text-accent transition-colors duration-200 flex items-center gap-1 py-4">
-          Shop
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="nav-dropdown absolute top-full left-0 w-64 bg-white rounded-sm shadow-xl border border-charcoal/5 py-2">
-          {shopItems.map((item) => (
-            <a href={item.href} class="block px-4 py-3 hover:bg-offwhite transition-colors" data-tbd={item.tbd || undefined}>
-              <span class="text-sm font-semibold text-charcoal block">{item.label}</span>
-              <span class="text-xs text-slate-body">{item.desc}</span>
-            </a>
-          ))}
-        </div>
-      </div>
+    <nav class="hidden lg:flex items-center gap-8">
+      <a href="/work" class="text-sm font-medium text-graphite hover:text-ink transition-colors duration-200">Our work</a>
+      <a href="/process" class="text-sm font-medium text-graphite hover:text-ink transition-colors duration-200">How we work</a>
+      <a href="/about" class="text-sm font-medium text-graphite hover:text-ink transition-colors duration-200">About</a>
 
-      <!-- SOLUTIONS dropdown -->
-      <div class="nav-group relative">
-        <button class="text-sm font-medium text-slate-body hover:text-accent transition-colors duration-200 flex items-center gap-1 py-4">
-          Solutions
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="nav-dropdown absolute top-full left-0 w-52 bg-white rounded-sm shadow-xl border border-charcoal/5 py-2">
-          {solutionItems.map((item) => (
-            <a href={item.href} class="block px-4 py-2.5 text-sm font-medium text-charcoal hover:bg-offwhite hover:text-accent transition-colors" data-tbd={item.tbd || undefined}>
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </div>
+      <span class="text-soft-border">|</span>
 
-      <a href="/work" class="text-sm font-medium text-slate-body hover:text-accent transition-colors duration-200">Our Work</a>
-      <a href="/process" class="text-sm font-medium text-slate-body hover:text-accent transition-colors duration-200">How It Works</a>
-      <a href="/about" class="text-sm font-medium text-slate-body hover:text-accent transition-colors duration-200">About</a>
-
-      <!-- Text us -->
-      <a href="sms:+17724802284" class="text-sm font-medium text-slate-body hover:text-accent transition-colors duration-200 flex items-center gap-1.5">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-        (772) 480-2284
+      <a href="sms:+17724802284" class="text-sm text-stone hover:text-ink transition-colors duration-200">
+        <span class="text-stone">Text</span> <span class="font-medium text-ink">(772) 480-2284</span>
       </a>
 
-      <a href="/contact" class="inline-flex items-center px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-accent-dark transition-all duration-300">
-        Start a Project
+      <a href="/contact" class="inline-flex items-center px-6 h-10 bg-ink text-white text-sm font-medium tracking-wide uppercase hover:bg-accent transition-colors duration-300">
+        Request a quote
       </a>
     </nav>
 
-    <!-- Mobile hamburger -->
-    <button id="mobile-menu-btn" class="lg:hidden p-2 text-charcoal" aria-label="Open menu" aria-expanded="false">
+    <button id="mobile-menu-btn" class="lg:hidden p-2 text-ink" aria-label="Open menu" aria-expanded="false">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
   </div>
 
-  <!-- Mobile full-screen menu -->
-  <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-[calc(36px+56px)] bg-white z-40 overflow-y-auto pb-32">
-    <nav class="flex flex-col px-6 py-6 gap-1">
-      <!-- Shop section -->
-      <p class="text-xs font-semibold uppercase tracking-widest text-charcoal/40 mb-2 mt-2">Shop</p>
-      {shopItems.map((item) => (
-        <a href={item.href} class="py-2.5 text-base font-medium text-charcoal hover:text-accent transition-colors" data-tbd={item.tbd || undefined}>
-          {item.label}
-          <span class="text-xs text-slate-body ml-2">{item.desc}</span>
-        </a>
-      ))}
+  <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 top-[calc(36px+56px)] bg-paper z-40 overflow-y-auto pb-32">
+    <nav class="flex flex-col items-start px-8 py-12 gap-6">
+      <a href="/work" class="font-display text-4xl font-400 text-ink hover:text-accent transition-colors">Our work</a>
+      <a href="/process" class="font-display text-4xl font-400 text-ink hover:text-accent transition-colors">How we work</a>
+      <a href="/about" class="font-display text-4xl font-400 text-ink hover:text-accent transition-colors">About</a>
+      <a href="/dealerships" class="font-display text-4xl font-400 text-ink hover:text-accent transition-colors">Dealerships</a>
+      <a href="/contractors" class="font-display text-4xl font-400 text-ink hover:text-accent transition-colors">Contractors</a>
+      <a href="/franchise" class="font-display text-4xl font-400 text-ink hover:text-accent transition-colors">Franchise</a>
 
-      <div class="border-t border-charcoal/5 my-3"></div>
+      <div class="border-t border-soft-border w-full my-4"></div>
 
-      <!-- Solutions section -->
-      <p class="text-xs font-semibold uppercase tracking-widest text-charcoal/40 mb-2">Solutions</p>
-      {solutionItems.map((item) => (
-        <a href={item.href} class="py-2.5 text-base font-medium text-charcoal hover:text-accent transition-colors" data-tbd={item.tbd || undefined}>
-          {item.label}
-        </a>
-      ))}
+      <a href="mailto:info@acapp.us" class="text-base font-medium text-ink">info@acapp.us</a>
+      <a href="sms:+17724802284" class="text-base text-stone">(772) 480-2284</a>
 
-      <div class="border-t border-charcoal/5 my-3"></div>
-
-      <a href="/work" class="py-2.5 text-base font-medium text-charcoal hover:text-accent">Our Work</a>
-      <a href="/process" class="py-2.5 text-base font-medium text-charcoal hover:text-accent">How It Works</a>
-      <a href="/about" class="py-2.5 text-base font-medium text-charcoal hover:text-accent">About</a>
-
-      <div class="border-t border-charcoal/5 my-3"></div>
-
-      <a href="sms:+17724802284" class="py-2.5 text-base font-semibold text-accent flex items-center gap-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-        Text (772) 480-2284
-      </a>
-      <a href="mailto:info@acapp.us" class="py-2.5 text-base font-semibold text-charcoal">info@acapp.us</a>
-
-      <a href="/contact" class="mt-4 inline-flex items-center justify-center px-5 py-3.5 bg-accent text-white text-base font-semibold rounded-sm">
-        Start a Project
+      <a href="/contact" class="mt-4 inline-flex items-center justify-center px-8 py-4 bg-ink text-white text-sm font-medium tracking-wide uppercase">
+        Request a quote
       </a>
     </nav>
   </div>
 </header>
 
-<!-- Spacer for fixed top bar + header -->
 <div class="h-[calc(36px+56px)] lg:h-[calc(36px+64px)]"></div>
 
 <script>
@@ -139,14 +62,9 @@ const solutionItems = [
     });
   }
 
-  // Add shadow on scroll
   if (header) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-        header.classList.add('shadow-md');
-      } else {
-        header.classList.remove('shadow-md');
-      }
+      header.classList.toggle('shadow-sm', window.scrollY > 10);
     });
   }
 </script>

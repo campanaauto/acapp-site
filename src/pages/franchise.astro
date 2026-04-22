@@ -31,22 +31,22 @@ const products = [
     </div>
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-20 md:pb-28 pt-40">
       <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-5">Franchise</p>
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tighter leading-[0.95] mb-6 max-w-4xl">Brand-compliant<br /> merch, direct.</h1>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold font-display text-white tracking-tighter leading-[0.95] mb-6 max-w-4xl">Brand-compliant<br /> merch, direct.</h1>
       <p class="text-xl md:text-2xl text-white/90 font-medium mb-3">No corporate portal headaches.</p>
       <p class="text-sm md:text-base text-white/50 mb-10 max-w-xl leading-relaxed">Opening event swag, staff uniforms, signage, and print collateral that meets corporate brand standards. Ordered direct, shipped when you need it.</p>
-      <a href="#quote" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-bold text-base rounded-sm hover:bg-accent-dark transition-all duration-300">Get a Franchise Quote</a>
+      <a href="#quote" class="inline-flex items-center justify-center px-8 py-4 bg-ink text-white font-bold text-base hover:bg-accent transition-all duration-300">Get a Franchise Quote</a>
     </div>
   </section>
 
-  <section class="py-24 md:py-32 bg-offwhite">
+  <section class="py-24 md:py-32 bg-paper">
     <div class="max-w-4xl mx-auto px-6 text-center" data-reveal>
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-charcoal tracking-tight leading-tight mb-12">You're tired of…</h2>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-ink tracking-tight leading-tight mb-12">You're tired of…</h2>
       <div class="space-y-6 max-w-2xl mx-auto">
-        <p class="text-xl md:text-2xl text-slate-body leading-relaxed">Corporate ordering portals that take weeks</p>
+        <p class="text-xl md:text-2xl text-graphite leading-relaxed">Corporate ordering portals that take weeks</p>
         <div class="w-8 h-px bg-accent mx-auto"></div>
-        <p class="text-xl md:text-2xl text-slate-body leading-relaxed">Opening event dates that won't move</p>
+        <p class="text-xl md:text-2xl text-graphite leading-relaxed">Opening event dates that won't move</p>
         <div class="w-8 h-px bg-accent mx-auto"></div>
-        <p class="text-xl md:text-2xl text-slate-body leading-relaxed">Brand standard compliance that slows everything down</p>
+        <p class="text-xl md:text-2xl text-graphite leading-relaxed">Brand standard compliance that slows everything down</p>
       </div>
     </div>
   </section>
@@ -55,33 +55,33 @@ const products = [
 
   <section class="py-24 md:py-32">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl md:text-5xl font-extrabold text-charcoal tracking-tight mb-12 md:mb-16" data-reveal>What we make for franchise owners.</h2>
+      <h2 class="text-4xl md:text-5xl font-bold font-display text-ink tracking-tight mb-12 md:mb-16" data-reveal>What we make for franchise owners.</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal>
         {products.map((product) => (
           <div class="group">
-            <div class="overflow-hidden rounded-sm mb-4"><img src={product.image} alt={product.name} class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" /></div>
-            <p class="text-base font-semibold text-charcoal">{product.name}</p>
+            <div class="overflow-hidden mb-4"><img src={product.image} alt={product.name} class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" /></div>
+            <p class="text-base font-semibold text-ink">{product.name}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="py-24 md:py-32 bg-offwhite">
+  <section class="py-24 md:py-32 bg-paper">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl md:text-5xl font-extrabold text-charcoal tracking-tight mb-12 md:mb-16" data-reveal>How franchise owners use us.</h2>
+      <h2 class="text-4xl md:text-5xl font-bold font-display text-ink tracking-tight mb-12 md:mb-16" data-reveal>How franchise owners use us.</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-reveal>
         <div class="border-l-2 border-accent pl-6">
-          <h3 class="text-xl font-bold text-charcoal mb-3">Grand opening launch</h3>
-          <p class="text-slate-body leading-relaxed">Staff uniforms, window signage, and opening-day giveaways — all brand-compliant, all on time.</p>
+          <h3 class="text-xl font-bold font-display text-ink mb-3">Grand opening launch</h3>
+          <p class="text-graphite leading-relaxed">Staff uniforms, window signage, and opening-day giveaways — all brand-compliant, all on time.</p>
         </div>
         <div class="border-l-2 border-accent pl-6">
-          <h3 class="text-xl font-bold text-charcoal mb-3">Seasonal staff refresh</h3>
-          <p class="text-slate-body leading-relaxed">New tees and aprons for summer crew, sized and shipped to the store before the first shift.</p>
+          <h3 class="text-xl font-bold font-display text-ink mb-3">Seasonal staff refresh</h3>
+          <p class="text-graphite leading-relaxed">New tees and aprons for summer crew, sized and shipped to the store before the first shift.</p>
         </div>
         <div class="border-l-2 border-accent pl-6">
-          <h3 class="text-xl font-bold text-charcoal mb-3">Multi-location orders</h3>
-          <p class="text-slate-body leading-relaxed">Same branding, different sizes, shipped to three locations. One order, one invoice, one vendor.</p>
+          <h3 class="text-xl font-bold font-display text-ink mb-3">Multi-location orders</h3>
+          <p class="text-graphite leading-relaxed">Same branding, different sizes, shipped to three locations. One order, one invoice, one vendor.</p>
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@ const products = [
   <section class="py-24 md:py-32">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 relative" data-reveal>
-        <div class="hidden md:block absolute top-14 left-[12.5%] right-[12.5%] h-px bg-charcoal/10"></div>
+        <div class="hidden md:block absolute top-14 left-[12.5%] right-[12.5%] h-px bg-ink/10"></div>
         {[
           { n: '01', h: 'Tell us what you need', p: 'Quantity, deadline, and the general idea.' },
           { n: '02', h: 'Mockup in 24 hours', p: 'Approve it, tweak it, or scrap it.' },
@@ -99,20 +99,20 @@ const products = [
         ].map((s) => (
           <div class="relative">
             <p class="text-5xl font-extrabold text-accent mb-5">{s.n}</p>
-            <h3 class="text-xl font-bold text-charcoal tracking-tight mb-3">{s.h}</h3>
-            <p class="text-slate-body text-sm leading-relaxed">{s.p}</p>
+            <h3 class="text-xl font-bold font-display text-ink tracking-tight mb-3">{s.h}</h3>
+            <p class="text-graphite text-sm leading-relaxed">{s.p}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section id="quote" class="bg-dark py-24 md:py-32">
+  <section id="quote" class="bg-ink py-24 md:py-32">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         <div class="flex flex-col justify-center" data-reveal>
           <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4">Franchise</p>
-          <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">Start your<br /> franchise order.</h2>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white tracking-tight leading-tight mb-6">Start your<br /> franchise order.</h2>
           <p class="text-lg text-white/50 leading-relaxed mb-10">Get a flat-rate quote inside 24 hours.</p>
           <div class="space-y-3">
             <p><a href="mailto:info@acapp.us" class="text-xl font-bold text-white hover:text-accent transition-colors duration-300">info@acapp.us</a></p>
