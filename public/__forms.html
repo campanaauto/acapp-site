@@ -53,5 +53,36 @@
         <option value="1000+">1000+</option>
       </select>
     </form>
+
+    <!-- Product quote modal form -->
+    <form name="product-quote" netlify netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input type="hidden" name="form-name" value="product-quote" />
+      <input type="text" name="product_name" />
+      <input type="text" name="category" />
+      <input type="email" name="email" />
+      <input type="text" name="quantity" />
+      <input type="text" name="company" />
+      <input type="date" name="deadline" />
+      <textarea name="notes"></textarea>
+      <input type="text" name="source" />
+      <input type="text" name="submitted_at" />
+      <input type="text" name="utm_source" />
+      <input type="text" name="utm_medium" />
+      <input type="text" name="utm_campaign" />
+      <input type="text" name="utm_content" />
+      <input type="text" name="utm_term" />
+    </form>
+
+    <!-- Sample pack request form -->
+    <form name="sample-pack" netlify netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input type="hidden" name="form-name" value="sample-pack" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <textarea name="shipping_address"></textarea>
+      <input type="text" name="source" />
+      <input type="text" name="submitted_at" />
+    </form>
   </body>
 </html>

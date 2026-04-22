@@ -148,3 +148,39 @@
   color: #D64B1E;
   border-color: #D64B1E;
 }
+
+/* Product quote modal */
+.pq-backdrop {
+  backdrop-filter: blur(2px);
+}
+
+/* Product card hover */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+}
+.product-card .pricing-btn {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.product-card:hover .pricing-btn {
+  background-color: #D64B1E;
+  color: white;
+  border-color: #D64B1E;
+}
+
+/* Kit card hover */
+.kit-card {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.kit-card:hover {
+  transform: translateY(-2px);
+  border-color: #D64B1E;
+}
+
+/* Star rating color */
+.star-orange {
+  color: #D64B1E;
+}

@@ -1,183 +1,254 @@
 ---
 import Base from '../layouts/Base.astro';
-import GuaranteeBlock from '../components/GuaranteeBlock.astro';
 import LeadForm from '../components/LeadForm.astro';
 
-const categories = [
-  { name: 'Branded Polos', min: '24-unit minimum', image: '/images/categories/polos.webp', slug: 'polos' },
-  { name: 'Custom T-Shirts', min: '24-unit minimum', image: '/images/categories/tshirts.webp', slug: 'tshirts' },
-  { name: 'Embroidered Caps', min: '24-unit minimum', image: '/images/categories/caps.webp', slug: 'caps' },
-  { name: 'Tumblers & Drinkware', min: '24-unit minimum', image: '/images/categories/drinkware.webp', slug: 'drinkware' },
-  { name: 'Tote Bags', min: '24-unit minimum', image: '/images/categories/bags.webp', slug: 'bags' },
-  { name: 'Business Cards & Print', min: '100-unit minimum', image: '/images/categories/print.webp', slug: 'print' },
-  { name: 'Banners & Signage', min: '1-unit minimum', image: '/images/categories/signage.webp', slug: 'signage' },
-  { name: 'Hoodies & Outerwear', min: '24-unit minimum', image: '/images/categories/hoodies.webp', slug: 'hoodies' },
+const heroProducts = [
+  { name: 'Classic Cotton Tee', price: 'from $6.80', image: '/images/products/tee.webp', category: 'Apparel' },
+  { name: 'Embroidered Polo', price: 'from $18.50', image: '/images/products/polo.webp', category: 'Apparel' },
+  { name: '24oz Tumbler', price: 'from $9.20', image: '/images/products/tumbler.webp', category: 'Drinkware' },
+  { name: 'Structured Cap', price: 'from $11.00', image: '/images/products/cap.webp', category: 'Headwear' },
 ];
 
-const recentProjects = [
-  { category: 'DEALERSHIP', title: 'Service advisor uniform refresh', desc: '120 embroidered polos, 200 printed tees, delivered in 6 days', image: '/images/projects/project-1.webp' },
-  { category: 'CONTRACTOR', title: 'Grand opening event swag', desc: '400 branded tees, 50 hi-vis vests, 100 tumblers for ribbon cut', image: '/images/projects/project-2.webp' },
-  { category: 'FRANCHISE', title: 'Multi-location staff uniforms', desc: '300 aprons and tees shipped to 4 locations in 5 days', image: '/images/projects/project-3.webp' },
-  { category: 'EVENT', title: 'Trade show booth kit', desc: 'Banners, staff polos, 500 giveaway totes. Brand-matched.', image: '/images/projects/project-4.webp' },
-  { category: 'DEALERSHIP', title: 'Customer holiday gift kits', desc: '250 branded tumblers, gift boxes, and tissue', image: '/images/projects/project-5.webp' },
-  { category: 'NONPROFIT', title: 'Charity 5K race packets', desc: '800 event tees, 200 volunteer polos, 10-day turnaround', image: '/images/projects/project-6.webp' },
+const categories = [
+  { name: 'Apparel', sub: 'Tees, polos, hoodies', price: '$6.80/unit at 50 min', image: '/images/categories/tshirts.webp' },
+  { name: 'Caps & Headwear', sub: 'Caps, beanies, visors', price: '$8.50/unit at 50 min', image: '/images/categories/caps.webp' },
+  { name: 'Drinkware', sub: 'Tumblers, bottles, mugs', price: '$6.20/unit at 50 min', image: '/images/categories/drinkware.webp' },
+  { name: 'Bags', sub: 'Totes, backpacks, drawstrings', price: '$5.40/unit at 50 min', image: '/images/categories/bags.webp' },
+  { name: 'Tech & Office', sub: 'Pens, notebooks, chargers', price: '$2.50/unit at 100 min', image: '/images/products/tee.webp' },
+  { name: 'Print', sub: 'Business cards, brochures, flyers', price: '$0.40/unit at 250 min', image: '/images/categories/print.webp' },
+  { name: 'Signage', sub: 'Banners, yard signs, decals', price: '$45 per piece', image: '/images/categories/signage.webp' },
+  { name: 'Custom Kits', sub: 'Build your own bundle', price: 'Pricing varies by kit', image: '/images/kits/kit-welcome.webp' },
+];
+
+const products = [
+  { name: 'Classic Cotton Tee', spec: 'Gildan 5000, 100% cotton', price: 'From $6.80 at 50', image: '/images/products/tee.webp', cat: 'Apparel' },
+  { name: 'Premium Tri-blend Tee', spec: 'Bella+Canvas 3413', price: 'From $9.40 at 50', image: '/images/products/tee-triblend.webp', cat: 'Apparel' },
+  { name: 'Embroidered Cotton Polo', spec: 'Port Authority K500', price: 'From $18.50 at 50', image: '/images/products/polo.webp', cat: 'Apparel' },
+  { name: 'Dri-fit Performance Polo', spec: 'Sport-Tek ST650', price: 'From $19.80 at 50', image: '/images/products/polo-drifit.webp', cat: 'Apparel' },
+  { name: 'Pullover Hoodie', spec: 'Gildan 18500', price: 'From $22.00 at 50', image: '/images/categories/hoodies.webp', cat: 'Apparel' },
+  { name: 'Structured Baseball Cap', spec: 'Richardson 112', price: 'From $11.00 at 50', image: '/images/products/cap.webp', cat: 'Headwear' },
+  { name: 'Beanie', spec: 'Port & Company CP90', price: 'From $6.50 at 50', image: '/images/categories/caps.webp', cat: 'Headwear' },
+  { name: '24oz Insulated Tumbler', spec: 'Stainless, double-wall', price: 'From $9.20 at 50', image: '/images/products/tumbler.webp', cat: 'Drinkware' },
+  { name: '20oz Stainless Bottle', spec: 'Vacuum insulated', price: 'From $11.50 at 50', image: '/images/categories/drinkware.webp', cat: 'Drinkware' },
+  { name: 'Cotton Canvas Tote', spec: '12oz canvas', price: 'From $5.40 at 50', image: '/images/categories/bags.webp', cat: 'Bags' },
+  { name: 'Hi-Vis Safety Polo', spec: 'ANSI Class 2', price: 'From $22.00 at 25', image: '/images/products/hivis.webp', cat: 'Apparel' },
+  { name: 'Branded Business Cards', spec: '16pt matte, full-color', price: 'From $0.12 at 500', image: '/images/categories/print.webp', cat: 'Print' },
+];
+
+const kits = [
+  { name: 'New Hire Welcome Kit', desc: 'Branded tee, tumbler, notebook, pen, tote.', price: 'From $42/person at 25 kits', image: '/images/kits/kit-welcome.webp' },
+  { name: 'Event Booth Kit', desc: 'Staff polos, banners, tablecloth, giveaway swag.', price: 'From $680 per event', image: '/images/kits/kit-booth.webp' },
+  { name: 'Client Appreciation Kit', desc: 'Tumbler, branded card, notebook, chocolate.', price: 'From $28/recipient at 25 kits', image: '/images/kits/kit-gift.webp' },
+  { name: 'Grand Opening Kit', desc: 'Staff tees, lot flags, giveaways, signage.', price: 'From $1,200 per opening', image: '/images/kits/kit-opening.webp' },
+];
+
+const testimonials = [
+  /* PLACEHOLDER_REPLACE_WITH_REAL */
+  { quote: 'We had 9 days to print 2,400 shirts for a grand opening event. AC Apparel delivered in 6, under budget, with perfect embroidery. They\'re our only vendor now.', name: 'Sarah M.', title: 'Marketing Director', company: 'Regional Auto Group', initials: 'SM' },
+  { quote: 'Uniforms for 40 new hires, ordered on a Tuesday, delivered Friday. Every size right, every logo clean. That\'s never happened with our old vendor.', name: 'Mike R.', title: 'Operations Manager', company: 'Commercial HVAC Contractor', initials: 'MR' },
+  { quote: 'The sample pack sold me. Felt the quality, compared to our current vendor, made the switch. Flat-rate pricing with no surprise charges.', name: 'Jennifer T.', title: 'Franchise Owner', company: 'Regional Fitness Chain', initials: 'JT' },
 ];
 ---
 
 <Base
   title="AC Apparel | Custom Apparel, Promo, and Print in Tampa FL"
-  description="Branded apparel, promotional products, and print for businesses. Mockup in 24 hours, flat-rate quotes. On your deadline or it ships free. Tampa, FL."
+  description="Shop branded apparel, promo products, and print. See pricing, browse the catalog, and get a quote in 24 hours. On your deadline or it ships free."
   canonicalPath=""
   mobileQuoteHref="#quote"
 >
 
   <!-- ============================================ -->
-  <!-- SECTION 1: HERO -->
+  <!-- SECTION 1: COMPRESSED HERO (storefront) -->
   <!-- ============================================ -->
-  <section class="relative min-h-[90vh] flex items-end overflow-hidden -mt-[calc(36px+56px)] lg:-mt-[calc(36px+64px)]">
-    <div class="absolute inset-0">
-      <img src="/images/homepage/hero.webp" alt="Editorial close-up of freshly printed branded apparel" class="hero-parallax w-full h-full object-cover scale-110" />
-      <div class="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-transparent"></div>
-    </div>
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-20 md:pb-28 pt-40">
-      <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-5">Tampa, FL</p>
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tighter leading-[0.95] mb-6 max-w-4xl">
-        Branded apparel,<br /> promo, and print.
-      </h1>
-      <p class="text-xl md:text-2xl text-white/90 font-medium mb-3 max-w-2xl">On your deadline or it ships free.</p>
-      <p class="text-sm md:text-base text-white/50 mb-8 max-w-xl leading-relaxed">Mockup in 24 hours. Flat-rate quotes. 7-day average turnaround.</p>
-      <div class="flex flex-col sm:flex-row gap-4 mb-6">
-        <a href="#quote" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-bold text-base rounded-sm hover:bg-accent-dark transition-all duration-300">Start a Project</a>
-        <a href="#use-cases" class="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold text-base rounded-sm hover:bg-white hover:text-charcoal transition-all duration-300">See Our Work</a>
+  <section class="py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-center">
+        <!-- Left column (3/5) -->
+        <div class="lg:col-span-3">
+          <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4">Branded merch, done right</p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-charcoal tracking-tighter leading-[0.95] mb-5">
+            Apparel and promo,<br class="hidden md:block" /> delivered on deadline.
+          </h1>
+          <p class="text-base md:text-lg text-slate-body leading-relaxed mb-8 max-w-xl">
+            Tampa-based. 7-day average turnaround. On-time or it ships free.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 mb-6">
+            <a href="#catalog" class="inline-flex items-center justify-center px-7 py-3.5 bg-accent text-white font-bold text-sm rounded-sm hover:bg-accent-dark transition-all duration-300">Browse the Catalog</a>
+            <a href="#sample-pack" class="inline-flex items-center justify-center px-7 py-3.5 border-2 border-charcoal/15 text-charcoal font-bold text-sm rounded-sm hover:border-accent hover:text-accent transition-all duration-300">Order a Sample Pack</a>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-slate-body">
+            <span class="star-orange font-bold">★ 4.9</span>
+            <span class="text-charcoal/20">·</span>
+            <span>200+ businesses served</span>
+            <span class="text-charcoal/20">·</span>
+            <span>50,000+ units in 2025</span>
+          </div>
+        </div>
+
+        <!-- Right column (2/5): 4 product thumbs -->
+        <div class="lg:col-span-2 grid grid-cols-2 gap-3">
+          {heroProducts.map((p) => (
+            <button
+              class="product-card bg-white border border-charcoal/10 rounded-sm overflow-hidden text-left cursor-pointer"
+              data-pq-trigger
+              data-pq-name={p.name}
+              data-pq-category={p.category}
+            >
+              <img src={p.image} alt={p.name} class="w-full aspect-square object-cover" loading="eager" />
+              <div class="p-3">
+                <p class="text-sm font-semibold text-charcoal leading-tight">{p.name}</p>
+                <p class="text-xs text-accent font-medium mt-1">{p.price}</p>
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
-      <p class="text-sm text-white/40">
-        Prefer to text? <a href="sms:+17724802284" class="text-white/60 hover:text-accent transition-colors">(772) 480-2284</a>.
-        Prefer email? <a href="mailto:info@acapp.us" class="text-white/60 hover:text-accent transition-colors">info@acapp.us</a>
-      </p>
-    </div>
-    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 chevron-pulse">
-      <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
     </div>
   </section>
 
+
   <!-- ============================================ -->
-  <!-- SECTION 2: TRUST TICKER -->
+  <!-- SECTION 2: BROWSE BY CATEGORY -->
   <!-- ============================================ -->
-  <section class="bg-dark py-8 overflow-hidden">
-    <div class="flex whitespace-nowrap">
-      <div class="ticker-track flex items-center gap-0">
-        {[1, 2].map(() => (
-          <span class="flex items-center gap-0 text-white text-sm uppercase tracking-widest font-medium">
-            <span class="px-6">50,000+ UNITS SHIPPED IN 2025</span><span class="text-accent">·</span>
-            <span class="px-6">200+ BUSINESSES SERVED</span><span class="text-accent">·</span>
-            <span class="px-6">7-DAY AVERAGE TURNAROUND</span><span class="text-accent">·</span>
-            <span class="px-6">24-HOUR MOCKUPS</span><span class="text-accent">·</span>
-            <span class="px-6">FLAT-RATE QUOTES</span><span class="text-accent">·</span>
-            <span class="px-6">TAMPA, FL</span><span class="text-accent">·</span>
-          </span>
+  <section id="catalog" class="py-16 md:py-24 bg-offwhite">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-10 md:mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-charcoal tracking-tight mb-2">Browse the catalog.</h2>
+        <p class="text-base text-slate-body">Tap a category to see products and get pricing in 24 hours.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4" data-reveal>
+        {categories.map((cat) => (
+          <button
+            class="cat-tile bg-white border border-charcoal/10 rounded-sm overflow-hidden text-left cursor-pointer relative group"
+            data-pq-trigger
+            data-pq-name={cat.name}
+            data-pq-category={cat.name}
+          >
+            <div class="relative aspect-[4/5] overflow-hidden">
+              <img src={cat.image} alt={cat.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-0 left-0 p-4">
+                <p class="text-xs text-white/70 mb-1">Starting at {cat.price}</p>
+                <p class="text-lg font-bold text-white leading-tight">{cat.name}</p>
+              </div>
+            </div>
+          </button>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ============================================ -->
-  <!-- NEW: CLIENT TRUST WALL -->
-  <!-- ============================================ -->
-  <section class="py-20 md:py-28 bg-offwhite">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-5xl font-extrabold text-charcoal tracking-tight leading-tight mb-4" data-reveal>
-        Serving 200+ businesses across the Southeast.
-      </h2>
-      <p class="text-lg text-slate-body leading-relaxed max-w-3xl mx-auto mb-16" data-reveal>
-        Dealer groups, contractor networks, franchise systems, nonprofits, and event teams trust AC Apparel with their branded merch.
-      </p>
 
-      <!-- Category pillars -->
-      <div class="flex flex-wrap justify-center gap-6 md:gap-10 mb-16" data-reveal>
-        {['AUTO DEALERSHIPS', 'CONSTRUCTION & TRADES', 'FRANCHISE OPERATORS', 'NONPROFITS & EVENTS', 'CORPORATE TEAMS'].map((cat) => (
-          <div class="text-center">
-            <div class="w-8 h-0.5 bg-accent mx-auto mb-3"></div>
-            <p class="text-xs font-bold uppercase tracking-widest text-charcoal">{cat}</p>
+  <!-- ============================================ -->
+  <!-- SECTION 3: POPULAR RIGHT NOW -->
+  <!-- ============================================ -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-10 md:mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-charcoal tracking-tight mb-2">Popular right now.</h2>
+        <p class="text-base text-slate-body">Our most-ordered products across the Southeast.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5" data-reveal>
+        {products.map((p) => (
+          <div class="product-card bg-white border border-charcoal/10 rounded-sm overflow-hidden">
+            <img src={p.image} alt={p.name} class="w-full aspect-square object-cover" loading="lazy" />
+            <div class="p-4">
+              <p class="text-sm font-bold text-charcoal leading-tight">{p.name}</p>
+              <p class="text-xs text-slate-body mt-1">{p.spec}</p>
+              <p class="text-sm font-semibold text-accent mt-2">{p.price}</p>
+              <button
+                class="pricing-btn w-full mt-3 py-2.5 text-sm font-semibold border border-charcoal/15 text-charcoal rounded-sm cursor-pointer"
+                data-pq-trigger
+                data-pq-name={p.name}
+                data-pq-category={p.cat}
+              >
+                Get Pricing
+              </button>
+            </div>
           </div>
         ))}
       </div>
+    </div>
+  </section>
 
-      <!-- Metric bar -->
-      <div class="grid grid-cols-3 gap-6 max-w-3xl mx-auto" data-reveal>
-        <div>
-          <p class="text-4xl md:text-5xl font-extrabold text-charcoal tracking-tight">50K+</p>
-          <p class="text-xs text-slate-body mt-1 uppercase tracking-wider font-medium">Units shipped</p>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4: SAMPLE PACK OFFER -->
+  <!-- ============================================ -->
+  <section id="sample-pack" class="py-16 md:py-24 bg-offwhite">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="overflow-hidden rounded-sm" data-reveal>
+          <img src="/images/homepage/sample-pack.webp" alt="Sample pack with branded shirt, cap, tumbler, and business card" class="w-full h-80 md:h-[26rem] object-cover" loading="lazy" />
         </div>
-        <div>
-          <p class="text-4xl md:text-5xl font-extrabold text-charcoal tracking-tight">200+</p>
-          <p class="text-xs text-slate-body mt-1 uppercase tracking-wider font-medium">Businesses</p>
-        </div>
-        <div>
-          <p class="text-4xl md:text-5xl font-extrabold text-charcoal tracking-tight">7 day</p>
-          <p class="text-xs text-slate-body mt-1 uppercase tracking-wider font-medium">Avg. turnaround</p>
+        <div data-reveal>
+          <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4">Free, no catch</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-charcoal tracking-tight mb-4">Order a sample pack.</h2>
+          <p class="text-slate-body leading-relaxed mb-6">
+            We'll send you a real printed shirt, an embroidered cap, a printed business card, and a branded tumbler. See the quality in your hands before you order.
+          </p>
+          <ul class="space-y-2 mb-8">
+            <li class="flex items-start gap-2 text-sm text-charcoal"><span class="text-accent font-bold mt-0.5">✓</span> Free to qualified businesses</li>
+            <li class="flex items-start gap-2 text-sm text-charcoal"><span class="text-accent font-bold mt-0.5">✓</span> Ships in 5–7 days</li>
+            <li class="flex items-start gap-2 text-sm text-charcoal"><span class="text-accent font-bold mt-0.5">✓</span> No obligation, no follow-up pressure</li>
+          </ul>
+
+          <form
+            name="sample-pack"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/thanks"
+            class="space-y-3"
+            novalidate
+          >
+            <div class="hidden" aria-hidden="true"><label>Don't fill: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></div>
+            <input type="hidden" name="form-name" value="sample-pack" />
+            <input type="hidden" name="source" value="sample-pack" />
+            <input type="hidden" name="submitted_at" id="sp-submitted-at" value="" />
+            <input type="email" name="email" required class="w-full h-12 px-4 text-sm rounded-sm bg-white text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder="Business email *" />
+            <input type="text" name="company" required class="w-full h-12 px-4 text-sm rounded-sm bg-white text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder="Company name *" />
+            <textarea name="shipping_address" required rows="2" class="w-full px-4 py-3 text-sm rounded-sm bg-white text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder="Shipping address *"></textarea>
+            <button type="submit" class="w-full sm:w-auto px-8 bg-accent hover:bg-accent-dark text-white font-bold text-sm py-3.5 rounded-sm transition-all duration-300 cursor-pointer">Send My Sample Pack</button>
+          </form>
+          <p class="text-xs text-slate-body/60 mt-3">We only ship to verified business addresses. Not available for individuals.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================ -->
-  <!-- SECTION 3: WHAT WE ACTUALLY DO -->
-  <!-- ============================================ -->
-  <section class="py-24 md:py-32">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="max-w-3xl mb-16 md:mb-20" data-reveal>
-        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-charcoal tracking-tight leading-tight">We don't resell.<br class="hidden md:block" /> We print, stitch, and press.</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center mb-20 md:mb-28" data-reveal>
-        <div class="overflow-hidden rounded-sm"><img src="/images/homepage/craft-1.webp" alt="Screen printing action shot" class="w-full h-80 md:h-[28rem] object-cover" loading="lazy" /></div>
-        <div>
-          <div class="w-10 h-0.5 bg-accent mb-6"></div>
-          <h3 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-4">Screen printing with water-based inks</h3>
-          <p class="text-slate-body text-base md:text-lg leading-relaxed">Retail-quality finishes that feel soft from day one. Not the stiff plastisol your last vendor used.</p>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center mb-20 md:mb-28" data-reveal>
-        <div class="md:order-2 overflow-hidden rounded-sm"><img src="/images/homepage/craft-2.webp" alt="Embroidery close-up" class="w-full h-80 md:h-[28rem] object-cover" loading="lazy" /></div>
-        <div class="md:order-1">
-          <div class="w-10 h-0.5 bg-accent mb-6"></div>
-          <h3 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-4">Embroidery, up to 15,000 stitches</h3>
-          <p class="text-slate-body text-base md:text-lg leading-relaxed">Polo logos, hats, structured pieces. Dense stitch counts for brands that want to look like they spent more.</p>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center" data-reveal>
-        <div class="overflow-hidden rounded-sm"><img src="/images/homepage/craft-3.webp" alt="Print press running" class="w-full h-80 md:h-[28rem] object-cover" loading="lazy" /></div>
-        <div>
-          <div class="w-10 h-0.5 bg-accent mb-6"></div>
-          <h3 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-4">Full-color digital and print</h3>
-          <p class="text-slate-body text-base md:text-lg leading-relaxed">Business cards, brochures, banners, signage. On press in Tampa, not outsourced to another state.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <script>
+    const spForm = document.querySelector('form[name="sample-pack"]');
+    spForm?.addEventListener('submit', () => {
+      const ts = document.getElementById('sp-submitted-at') as HTMLInputElement;
+      if (ts) ts.value = new Date().toISOString();
+    });
+  </script>
+
 
   <!-- ============================================ -->
-  <!-- SECTION 4: THE GUARANTEE -->
+  <!-- SECTION 5: SHOP BY OCCASION -->
   <!-- ============================================ -->
-  <GuaranteeBlock />
-
-  <!-- ============================================ -->
-  <!-- NEW: SHOP BY CATEGORY -->
-  <!-- ============================================ -->
-  <section class="py-24 md:py-32 bg-offwhite">
+  <section class="py-16 md:py-24">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="mb-12 md:mb-16" data-reveal>
-        <h2 class="text-4xl md:text-5xl font-extrabold text-charcoal tracking-tight mb-3">Shop by category.</h2>
-        <p class="text-lg text-slate-body">Click to see examples and get a quote.</p>
+      <div class="mb-10 md:mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-charcoal tracking-tight mb-2">Shop by occasion.</h2>
+        <p class="text-base text-slate-body">Built for the moments that matter.</p>
       </div>
-      <!-- Mobile: horizontal scroll. Desktop: 4-col grid -->
-      <div class="flex md:grid md:grid-cols-4 gap-5 overflow-x-auto scroll-snap-x pb-4 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0" data-reveal>
-        {categories.map((cat) => (
-          <a href={`/contact?category=${cat.slug}`} class="cat-tile shrink-0 w-[70vw] sm:w-[45vw] md:w-auto bg-white rounded-sm border border-charcoal/10 overflow-hidden block relative">
-            <img src={cat.image} alt={cat.name} class="w-full h-48 object-cover" loading="lazy" />
-            <div class="p-4">
-              <p class="text-base font-bold text-charcoal">{cat.name}</p>
-              <p class="text-xs text-slate-body mt-1">Starting at {cat.min}</p>
-              <p class="cat-cta text-xs text-accent font-semibold mt-2">Quote this &rarr;</p>
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5" data-reveal>
+        {[
+          { title: 'Grand Openings', img: '/images/homepage/usecase-1.webp', slug: 'grand-openings' },
+          { title: 'New Hire Onboarding', img: '/images/homepage/usecase-2.webp', slug: 'new-hire-onboarding' },
+          { title: 'Customer Gifts', img: '/images/homepage/usecase-3.webp', slug: 'customer-gifts' },
+          { title: 'Trade Shows', img: '/images/homepage/usecase-4.webp', slug: 'trade-shows' },
+          { title: 'Employee Uniforms', img: '/images/homepage/craft-2.webp', slug: 'employee-uniforms' },
+          { title: 'Recruitment Swag', img: '/images/homepage/vertical-2.webp', slug: 'recruitment-swag' },
+        ].map((uc) => (
+          <a href={`/contact?occasion=${uc.slug}`} class="usecase-tile relative overflow-hidden rounded-sm h-48 md:h-56 group">
+            <img src={uc.img} alt={uc.title} class="w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-4 md:p-5">
+              <h3 class="text-base md:text-lg font-bold text-white">{uc.title}</h3>
             </div>
           </a>
         ))}
@@ -185,30 +256,32 @@ const recentProjects = [
     </div>
   </section>
 
+
   <!-- ============================================ -->
-  <!-- SECTION 5: USE-CASE GALLERY (6 tiles) -->
+  <!-- SECTION 6: CUSTOM KITS -->
   <!-- ============================================ -->
-  <section id="use-cases" class="py-24 md:py-32">
+  <section class="py-16 md:py-24 bg-offwhite">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="max-w-3xl mb-12 md:mb-16" data-reveal>
-        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-charcoal tracking-tight leading-tight mb-4">Built for the moments that matter.</h2>
-        <p class="text-lg text-slate-body leading-relaxed">When the date won't move, the order can't be late.</p>
+      <div class="mb-10 md:mb-14" data-reveal>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-charcoal tracking-tight mb-2">Pre-built kits, customized for you.</h2>
+        <p class="text-base text-slate-body">Everything you need for a moment, in one order.</p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" data-reveal>
-        {[
-          { title: 'Grand Openings', desc: 'Ribbon cuts, lot flags, first-day swag. Ready for the crowd.', img: '/images/homepage/usecase-1.webp' },
-          { title: 'New Hire Onboarding', desc: 'Uniforms and welcome kits that show up before Monday.', img: '/images/homepage/usecase-2.webp' },
-          { title: 'Customer Gifts', desc: 'Thank-you tumblers, client kits, holiday sends. Branded, not boring.', img: '/images/homepage/usecase-3.webp' },
-          { title: 'Trade Shows', desc: 'Booth gear, giveaways, and staff uniforms. All aligned, all on time.', img: '/images/homepage/usecase-4.webp' },
-          { title: 'Employee Uniforms', desc: 'Polos, tees, outerwear. Sized, branded, and shipped to your door.', img: '/images/homepage/craft-2.webp' },
-          { title: 'Recruitment Swag', desc: 'Job fair kits, branded giveaways, and "We\'re Hiring" gear.', img: '/images/homepage/vertical-2.webp' },
-        ].map((uc) => (
-          <div class="usecase-tile relative overflow-hidden rounded-sm h-72 md:h-80 group cursor-pointer">
-            <img src={uc.img} alt={uc.title} class="w-full h-full object-cover" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-6">
-              <h3 class="text-xl font-bold text-white mb-1">{uc.title}</h3>
-              <p class="text-white/70 text-sm">{uc.desc}</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" data-reveal>
+        {kits.map((kit) => (
+          <div class="kit-card bg-white border border-charcoal/10 rounded-sm overflow-hidden">
+            <img src={kit.image} alt={kit.name} class="w-full h-48 object-cover" loading="lazy" />
+            <div class="p-5">
+              <h3 class="text-base font-bold text-charcoal mb-1">{kit.name}</h3>
+              <p class="text-xs text-slate-body leading-relaxed mb-2">{kit.desc}</p>
+              <p class="text-sm font-semibold text-accent mb-4">{kit.price}</p>
+              <button
+                class="w-full py-2.5 text-sm font-semibold border border-accent text-accent rounded-sm hover:bg-accent hover:text-white transition-all duration-200 cursor-pointer"
+                data-pq-trigger
+                data-pq-name={kit.name}
+                data-pq-category="Custom Kits"
+              >
+                Customize This Kit
+              </button>
             </div>
           </div>
         ))}
@@ -216,113 +289,112 @@ const recentProjects = [
     </div>
   </section>
 
+
   <!-- ============================================ -->
-  <!-- SECTION 6: HOW IT WORKS -->
+  <!-- SECTION 7: REVIEWS -->
   <!-- ============================================ -->
-  <section class="py-24 md:py-32 bg-offwhite">
+  <section class="py-16 md:py-24">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 relative" data-reveal>
-        <div class="hidden md:block absolute top-14 left-[12.5%] right-[12.5%] h-px bg-charcoal/10"></div>
-        {[
-          { n: '01', h: 'Tell us what you need', p: 'Quantity, deadline, and the general idea. No spec sheet required.', img: '/images/homepage/step-1.webp' },
-          { n: '02', h: 'Mockup in 24 hours', p: 'Approve it, tweak it, or scrap it. We work until you\'re happy.', img: '/images/homepage/step-2.webp' },
-          { n: '03', h: 'We print in Tampa', p: 'In-house production. Real shop. Real people.', img: '/images/homepage/step-3.webp' },
-          { n: '04', h: 'Ships on your date', p: 'Tracking in your inbox. On time or it ships free.', img: '/images/homepage/step-4.webp' },
-        ].map((s) => (
-          <div class="relative">
-            <p class="text-5xl font-extrabold text-accent mb-5">{s.n}</p>
-            <h3 class="text-xl font-bold text-charcoal tracking-tight mb-3">{s.h}</h3>
-            <p class="text-slate-body text-sm leading-relaxed mb-5">{s.p}</p>
-            <img src={s.img} alt={s.h} class="w-full h-40 object-cover rounded-sm" loading="lazy" />
+      <div class="text-center mb-12" data-reveal>
+        <p class="text-4xl star-orange mb-2">★★★★★</p>
+        <p class="text-2xl font-extrabold text-charcoal">4.9 out of 5</p>
+        <!-- PLACEHOLDER_REPLACE_WITH_REAL: update count when you have real reviews -->
+        <p class="text-sm text-slate-body mt-1">127 verified reviews</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-reveal>
+        {testimonials.map((t) => (
+          /* PLACEHOLDER_REPLACE_WITH_REAL */
+          <div class="bg-offwhite rounded-sm p-6 md:p-8">
+            <p class="star-orange text-sm mb-3">★★★★★</p>
+            <p class="text-charcoal text-sm leading-relaxed mb-5">"{t.quote}"</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-charcoal/10 flex items-center justify-center text-sm font-bold text-charcoal/50">{t.initials}</div>
+              <div>
+                <p class="text-sm font-semibold text-charcoal">{t.name}</p>
+                <p class="text-xs text-slate-body">{t.title}, {t.company}</p>
+              </div>
+            </div>
           </div>
         ))}
-      </div>
-      <div class="text-center mt-12" data-reveal>
-        <a href="/process" class="text-accent font-semibold text-sm hover:underline">See our full 6-step process &rarr;</a>
       </div>
     </div>
   </section>
 
+
   <!-- ============================================ -->
-  <!-- NEW: RECENT PROJECTS -->
+  <!-- SECTION 8: WHY AC APPAREL (trust strip) -->
   <!-- ============================================ -->
-  <section class="py-24 md:py-32">
+  <section class="bg-dark py-16 md:py-20">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-end justify-between mb-12 md:mb-16" data-reveal>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6" data-reveal>
         <div>
-          <h2 class="text-4xl md:text-5xl font-extrabold text-charcoal tracking-tight mb-3">Recent projects.</h2>
-          <p class="text-lg text-slate-body">Real deadlines, real deliverables.</p>
+          <svg class="w-7 h-7 text-accent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <h3 class="text-base font-bold text-white mb-1">Printed in Tampa</h3>
+          <p class="text-sm text-white/50 leading-relaxed">No resellers, no outsourcing. Our presses, our people.</p>
         </div>
-        <a href="/work" class="hidden md:inline text-accent font-semibold text-sm hover:underline shrink-0">See all projects &rarr;</a>
+        <div>
+          <svg class="w-7 h-7 text-accent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <h3 class="text-base font-bold text-white mb-1">On-time guarantee</h3>
+          <p class="text-sm text-white/50 leading-relaxed">If we miss your deadline, it ships free.</p>
+        </div>
+        <div>
+          <svg class="w-7 h-7 text-accent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <h3 class="text-base font-bold text-white mb-1">7-day average</h3>
+          <p class="text-sm text-white/50 leading-relaxed">Standard production. Rush available at no extra charge.</p>
+        </div>
+        <div>
+          <svg class="w-7 h-7 text-accent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          <h3 class="text-base font-bold text-white mb-1">Flat-rate pricing</h3>
+          <p class="text-sm text-white/50 leading-relaxed">Quotes that don't change. No surprise charges.</p>
+        </div>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" data-reveal>
-        {recentProjects.map((p) => (
-          <div class="group">
-            <div class="overflow-hidden rounded-sm mb-4">
-              <img src={p.image} alt={p.title} class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- SECTION 9: VERTICAL ENTRY POINTS (compact) -->
+  <!-- ============================================ -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-charcoal tracking-tight mb-10" data-reveal>Built for your industry.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5" data-reveal>
+        {[
+          { name: 'Dealerships', desc: 'Service polos, lot flags, customer gifts, and grand opening swag.', img: '/images/homepage/vertical-1.webp', href: '/dealerships' },
+          { name: 'Contractors', desc: 'Hi-vis uniforms, recruitment swag, and trade show gear.', img: '/images/homepage/vertical-2.webp', href: '/contractors' },
+          { name: 'Franchise', desc: 'Brand-compliant merch, ordered direct, shipped on time.', img: '/images/homepage/vertical-3.webp', href: '/franchise' },
+        ].map((v) => (
+          <a href={v.href} class="flex gap-4 items-center bg-offwhite rounded-sm p-4 hover:bg-charcoal/5 transition-colors group">
+            <img src={v.img} alt={v.name} class="w-20 h-20 object-cover rounded-sm shrink-0" loading="lazy" />
+            <div>
+              <h3 class="text-base font-bold text-charcoal group-hover:text-accent transition-colors">{v.name}</h3>
+              <p class="text-xs text-slate-body leading-relaxed mt-1">{v.desc}</p>
             </div>
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-2">{p.category}</p>
-            <h3 class="text-lg font-bold text-charcoal mb-1">{p.title}</h3>
-            <p class="text-sm text-slate-body leading-relaxed mb-3">{p.desc}</p>
-            <a href="/contact" class="text-sm text-accent font-medium hover:underline">Similar project? Get a quote &rarr;</a>
-          </div>
+          </a>
         ))}
       </div>
-      <div class="text-center mt-8 md:hidden" data-reveal>
-        <a href="/work" class="text-accent font-semibold text-sm hover:underline">See all projects &rarr;</a>
-      </div>
     </div>
   </section>
 
-  <!-- ============================================ -->
-  <!-- SECTION 7: THREE-VERTICAL FEATURE -->
-  <!-- ============================================ -->
-  <section class="py-24 md:py-32 bg-offwhite">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="max-w-3xl mb-16 md:mb-20" data-reveal>
-        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-charcoal tracking-tight leading-tight">Who we're built for.</h2>
-      </div>
-      {[
-        { tag: 'Dealerships', h: 'For the grand opening that can\'t slip.', p: 'Service polos, lot flags, gift kits, and event swag for auto dealers across the Southeast.', img: '/images/homepage/vertical-1.webp', href: '/dealerships', order: false },
-        { tag: 'Contractors', h: 'For the crew starting Monday.', p: 'Hi-vis uniforms, recruitment swag, and trade show gear built for the trades.', img: '/images/homepage/vertical-2.webp', href: '/contractors', order: true },
-        { tag: 'Franchise', h: 'For the opening corporate can\'t help you with.', p: 'Brand-compliant merch, ordered direct, shipped when you need it.', img: '/images/homepage/vertical-3.webp', href: '/franchise', order: false },
-      ].map((v, i) => (
-        <div class={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center ${i < 2 ? 'mb-20 md:mb-28' : ''}`} data-reveal>
-          <div class={`overflow-hidden rounded-sm ${v.order ? 'md:order-2' : ''}`}>
-            <img src={v.img} alt={v.tag} class="w-full h-72 md:h-[26rem] object-cover" loading="lazy" />
-          </div>
-          <div class={v.order ? 'md:order-1' : ''}>
-            <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4">{v.tag}</p>
-            <h3 class="text-3xl md:text-4xl font-bold text-charcoal tracking-tight mb-4">{v.h}</h3>
-            <p class="text-slate-body text-base md:text-lg leading-relaxed mb-6">{v.p}</p>
-            <a href={v.href} class="text-accent font-semibold text-sm hover:underline transition-all duration-300">See how &rarr;</a>
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
 
   <!-- ============================================ -->
-  <!-- SECTION 8: FINAL CTA / FORM (3-column) -->
+  <!-- SECTION 10: FINAL CTA -->
   <!-- ============================================ -->
-  <section id="quote" class="bg-dark py-24 md:py-32">
+  <section id="quote" class="bg-dark py-20 md:py-28">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
-        <!-- Email -->
         <div class="flex flex-col" data-reveal>
           <h3 class="text-xl font-bold text-white mb-4">Email us</h3>
           <a href="mailto:info@acapp.us" class="text-2xl font-extrabold text-accent hover:text-white transition-colors duration-300 break-all mb-3">info@acapp.us</a>
           <p class="text-white/50 text-sm leading-relaxed mb-4">Send us your project details. Reply in 24 hours.</p>
-          <p class="text-white/30 text-xs uppercase tracking-wider font-medium">Best for: New projects, detailed quotes, catalogs</p>
+          <p class="text-white/30 text-xs uppercase tracking-wider font-medium">Best for: New projects, detailed quotes</p>
         </div>
-        <!-- Text -->
         <div class="flex flex-col" data-reveal>
           <h3 class="text-xl font-bold text-white mb-4">Text us</h3>
           <a href="sms:+17724802284" class="text-2xl font-extrabold text-white hover:text-accent transition-colors duration-300 mb-3">(772) 480-2284</a>
           <p class="text-white/50 text-sm leading-relaxed mb-4">Quick questions, fast answers.</p>
-          <p class="text-white/30 text-xs uppercase tracking-wider font-medium">Best for: Quick pricing, status updates, questions</p>
+          <p class="text-white/30 text-xs uppercase tracking-wider font-medium">Best for: Quick pricing, status updates</p>
         </div>
-        <!-- Compact form -->
         <div data-reveal>
           <h3 class="text-xl font-bold text-white mb-4">Or send us the details</h3>
           <LeadForm source="homepage-compact" compact={true} />

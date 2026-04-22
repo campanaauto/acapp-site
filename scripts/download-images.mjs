@@ -6,7 +6,7 @@ import { dirname, join } from 'path';
 const BASE = 'public/images';
 
 const images = [
-  // Homepage
+  // Homepage editorial
   ['homepage/hero.webp', 'photo-1503342394128-c104d54dba01', 1920],
   ['homepage/craft-1.webp', 'photo-1503342394128-c104d54dba01', 1200],
   ['homepage/craft-2.webp', 'photo-1594938298603-c8148c4dae35', 1200],
@@ -22,9 +22,18 @@ const images = [
   ['homepage/vertical-1.webp', 'photo-1560250097-0b93528c311a', 1200],
   ['homepage/vertical-2.webp', 'photo-1504307651254-35680f356dfd', 1200],
   ['homepage/vertical-3.webp', 'photo-1556742049-0cfed4f6a45d', 1200],
+  ['homepage/sample-pack.webp', 'photo-1523381210434-271e8be1f52b', 1200],
 
-  // Shop categories
-  ['categories/polos.webp', 'photo-1594938298603-c8148c4dae35', 600],
+  // Product shots (hero thumbs + product grid)
+  ['products/tee.webp', 'photo-1521572163474-6864f9cf17ab', 600],
+  ['products/tee-triblend.webp', 'photo-1503342217505-b0a15ec3261c', 600],
+  ['products/polo.webp', 'photo-1594938298603-c8148c4dae35', 600],
+  ['products/polo-drifit.webp', 'photo-1596755094514-f87e34085b2c', 600],
+  ['products/tumbler.webp', 'photo-1514228742587-6b1558fcca3d', 600],
+  ['products/cap.webp', 'photo-1521369909029-2afed882baee', 600],
+  ['products/hivis.webp', 'photo-1578768079052-aa76e52ff62e', 600],
+
+  // Categories
   ['categories/tshirts.webp', 'photo-1523381210434-271e8be1f52b', 600],
   ['categories/caps.webp', 'photo-1521369909029-2afed882baee', 600],
   ['categories/drinkware.webp', 'photo-1514228742587-6b1558fcca3d', 600],
@@ -32,8 +41,15 @@ const images = [
   ['categories/print.webp', 'photo-1586075010923-2dd4570fb338', 600],
   ['categories/signage.webp', 'photo-1563906267088-b029e7101114', 600],
   ['categories/hoodies.webp', 'photo-1578768079052-aa76e52ff62e', 600],
+  ['categories/polos.webp', 'photo-1594938298603-c8148c4dae35', 600],
 
-  // Project tiles
+  // Kit photos
+  ['kits/kit-welcome.webp', 'photo-1523381210434-271e8be1f52b', 800],
+  ['kits/kit-booth.webp', 'photo-1540575467063-178a50c2df87', 800],
+  ['kits/kit-gift.webp', 'photo-1514228742587-6b1558fcca3d', 800],
+  ['kits/kit-opening.webp', 'photo-1559136555-9303baea8ebd', 800],
+
+  // Projects
   ['projects/project-1.webp', 'photo-1594938298603-c8148c4dae35', 800],
   ['projects/project-2.webp', 'photo-1489987707025-afc232f7ea0f', 800],
   ['projects/project-3.webp', 'photo-1556742049-0cfed4f6a45d', 800],

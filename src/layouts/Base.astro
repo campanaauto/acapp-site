@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import QuickQuoteWidget from '../components/QuickQuoteWidget.astro';
 import MobileCTABar from '../components/MobileCTABar.astro';
+import ProductQuoteModal from '../components/ProductQuoteModal.astro';
 
 interface Props {
   title: string;
@@ -57,6 +58,7 @@ const canonicalUrl = `https://acapp.us${canonicalPath}`;
     <Footer />
     <QuickQuoteWidget />
     <MobileCTABar quoteHref={mobileQuoteHref} />
+    <ProductQuoteModal />
     <script>
       import '../scripts/scroll-reveal.js';
     </script>

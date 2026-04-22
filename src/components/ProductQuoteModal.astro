@@ -1,0 +1,124 @@
+<!-- Product Quote Modal — single instance per page, populated via JS -->
+<div id="pq-backdrop" class="pq-backdrop fixed inset-0 z-[70] bg-black/60 hidden" aria-hidden="true">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div id="pq-card" class="pq-card bg-white rounded-sm shadow-2xl w-full max-w-md p-8 relative">
+      <button id="pq-close" class="absolute top-4 right-4 text-charcoal/40 hover:text-charcoal transition-colors cursor-pointer" aria-label="Close">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <h3 class="text-xl font-bold text-charcoal mb-1" id="pq-title">Want pricing on this product?</h3>
+      <p class="text-sm text-slate-body mb-6">Enter your email and we'll send a custom quote within 24 hours.</p>
+
+      <form
+        name="product-quote"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/thanks"
+        id="pq-form"
+        class="space-y-4"
+        novalidate
+      >
+        <div class="hidden" aria-hidden="true"><label>Don't fill: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></div>
+        <input type="hidden" name="form-name" value="product-quote" />
+        <input type="hidden" name="product_name" id="pq-product-name" value="" />
+        <input type="hidden" name="category" id="pq-category" value="" />
+        <input type="hidden" name="source" value="product-modal" />
+        <input type="hidden" name="submitted_at" id="pq-submitted-at" value="" />
+        <input type="hidden" name="utm_source" value="" />
+        <input type="hidden" name="utm_medium" value="" />
+        <input type="hidden" name="utm_campaign" value="" />
+        <input type="hidden" name="utm_content" value="" />
+        <input type="hidden" name="utm_term" value="" />
+
+        <div>
+          <label class="block text-xs font-semibold text-charcoal/60 mb-1">Email *</label>
+          <input type="email" name="email" required class="w-full h-12 px-4 text-sm rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder="you@company.com" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-charcoal/60 mb-1">Quantity *</label>
+          <select name="quantity" required class="w-full h-12 px-4 text-sm rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent transition-all">
+            <option value="">Select a range</option>
+            <option value="Under 50">Under 50</option>
+            <option value="50 to 250">50–250</option>
+            <option value="250 to 1000">250–1,000</option>
+            <option value="1000+">1,000+</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-charcoal/60 mb-1">Company *</label>
+          <input type="text" name="company" required class="w-full h-12 px-4 text-sm rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder="Company name" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-charcoal/60 mb-1">Deadline (optional)</label>
+          <input type="date" name="deadline" class="w-full h-12 px-4 text-sm rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent transition-all" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-charcoal/60 mb-1">Notes (optional)</label>
+          <textarea name="notes" rows="2" class="w-full px-4 py-2 text-sm rounded-sm bg-offwhite text-charcoal border border-charcoal/10 focus:outline-none focus:ring-2 focus:ring-accent transition-all" placeholder="Colors, sizes, design notes..."></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-accent hover:bg-accent-dark text-white font-bold text-base py-3.5 rounded-sm transition-all duration-300 cursor-pointer">Get My Quote</button>
+      </form>
+
+      <p class="text-center mt-4">
+        <button id="pq-continue" class="text-sm text-slate-body hover:text-accent transition-colors cursor-pointer">Prefer to browse more? Continue browsing</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const backdrop = document.getElementById('pq-backdrop');
+  const titleEl = document.getElementById('pq-title');
+  const productInput = document.getElementById('pq-product-name') as HTMLInputElement;
+  const categoryInput = document.getElementById('pq-category') as HTMLInputElement;
+  const closeBtn = document.getElementById('pq-close');
+  const continueBtn = document.getElementById('pq-continue');
+  const pqForm = document.getElementById('pq-form') as HTMLFormElement;
+
+  function openModal(productName: string, category: string) {
+    if (!backdrop || !titleEl || !productInput || !categoryInput) return;
+    titleEl.textContent = `Want pricing on ${productName}?`;
+    productInput.value = productName;
+    categoryInput.value = category;
+    backdrop.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!backdrop) return;
+    backdrop.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn?.addEventListener('click', closeModal);
+  continueBtn?.addEventListener('click', closeModal);
+  backdrop?.addEventListener('click', (e) => {
+    if (e.target === backdrop || (e.target as HTMLElement)?.closest('#pq-card') === null) closeModal();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // Attach to all product triggers
+  document.querySelectorAll('[data-pq-trigger]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const name = (el as HTMLElement).dataset.pqName || '';
+      const cat = (el as HTMLElement).dataset.pqCategory || '';
+      openModal(name, cat);
+    });
+  });
+
+  // UTM capture
+  const params = new URLSearchParams(window.location.search);
+  pqForm?.querySelectorAll('input[name^="utm_"]').forEach((el) => {
+    const key = (el as HTMLInputElement).name;
+    const val = params.get(key);
+    if (val) (el as HTMLInputElement).value = val;
+  });
+
+  pqForm?.addEventListener('submit', () => {
+    const ts = document.getElementById('pq-submitted-at') as HTMLInputElement;
+    if (ts) ts.value = new Date().toISOString();
+  });
+</script>
