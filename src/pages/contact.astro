@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import LeadForm from '../components/LeadForm.astro';
+---
+
+<Base
+  title="Contact AC Apparel | Start a Project"
+  description="Start a custom apparel, promo, or print project with AC Apparel. Email, text, or fill out our quote form. We respond within 24 hours."
+  canonicalPath="/contact"
+>
+
+  <!-- Hero -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-7xl font-extrabold text-charcoal tracking-tighter leading-[0.95] mb-4" data-reveal>
+        Start a project.
+      </h1>
+      <p class="text-lg text-slate-body leading-relaxed" data-reveal>
+        We respond within 24 hours, guaranteed.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3-column contact options -->
+  <section class="pb-12 md:pb-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
+        <!-- Email (biggest visual weight) -->
+        <div class="bg-offwhite rounded-sm p-8 md:p-10 text-center" data-reveal>
+          <div class="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h2 class="text-xl font-bold text-charcoal mb-3">Email us</h2>
+          <a href="mailto:info@acapp.us" class="text-2xl md:text-3xl font-extrabold text-accent hover:text-accent-dark transition-colors duration-300 break-all">info@acapp.us</a>
+          <p class="text-slate-body text-sm leading-relaxed mt-4">Send us your project details and a team member will reply within 24 hours.</p>
+          <p class="text-xs text-charcoal/40 mt-4 font-medium uppercase tracking-wider">Best for: New projects, detailed quotes, catalogs</p>
+        </div>
+
+        <!-- Text -->
+        <div class="bg-offwhite rounded-sm p-8 md:p-10 text-center" data-reveal>
+          <div class="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          </div>
+          <h2 class="text-xl font-bold text-charcoal mb-3">Text us</h2>
+          <a href="sms:+17724802284" class="text-2xl md:text-3xl font-extrabold text-charcoal hover:text-accent transition-colors duration-300">(772) 480-2284</a>
+          <p class="text-slate-body text-sm leading-relaxed mt-4">Fastest way to ask a quick question or start a project.</p>
+          <p class="text-xs text-charcoal/40 mt-4 font-medium uppercase tracking-wider">Best for: Quick pricing, status updates, questions</p>
+        </div>
+
+        <!-- Scroll to form -->
+        <div class="bg-offwhite rounded-sm p-8 md:p-10 text-center" data-reveal>
+          <div class="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h2 class="text-xl font-bold text-charcoal mb-3">Full quote form</h2>
+          <a href="#quote-form" class="text-2xl md:text-3xl font-extrabold text-charcoal hover:text-accent transition-colors duration-300">Fill it out below</a>
+          <p class="text-slate-body text-sm leading-relaxed mt-4">Give us the details and we'll send back a mockup and price.</p>
+          <p class="text-xs text-charcoal/40 mt-4 font-medium uppercase tracking-wider">Best for: Detailed projects, multiple items, events</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full form -->
+  <section id="quote-form" class="bg-dark py-24 md:py-32">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3 text-center" data-reveal>Send us the details</h2>
+      <p class="text-white/50 text-center mb-10" data-reveal>We'll send a mockup and a flat-rate quote within 24 hours.</p>
+      <div data-reveal>
+        <LeadForm source="contact-page" />
+      </div>
+    </div>
+  </section>
+
+</Base>

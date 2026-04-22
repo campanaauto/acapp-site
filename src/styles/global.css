@@ -63,3 +63,88 @@
 .usecase-tile:hover::after {
   border-color: #D64B1E;
 }
+
+/* Category tile hover */
+.cat-tile {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.cat-tile:hover {
+  transform: scale(1.02);
+  border-color: #D64B1E;
+}
+.cat-tile .cat-cta {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.cat-tile:hover .cat-cta {
+  opacity: 1;
+}
+
+/* Quick-quote widget slide */
+.qq-panel {
+  transform: translateY(1rem) scale(0.95);
+  opacity: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  pointer-events: none;
+}
+.qq-panel.open {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Nav dropdown */
+.nav-dropdown {
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.nav-group:hover .nav-dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Mobile safe area */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Horizontal scroll snap for mobile category rail */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-snap-x > * {
+  scroll-snap-align: start;
+}
+
+/* Sticky sidebar fade-in */
+.sticky-sidebar {
+  opacity: 0;
+  transform: translateX(1rem);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+.sticky-sidebar.visible {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* FAQ accordion */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-answer.open {
+  max-height: 20rem;
+}
+
+/* Project filter active state */
+.filter-btn.active {
+  color: #D64B1E;
+  border-color: #D64B1E;
+}

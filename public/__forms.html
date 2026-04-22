@@ -2,6 +2,7 @@
 <html lang="en">
   <head><title>Form Detection</title></head>
   <body>
+    <!-- Main lead form -->
     <form name="lead" netlify netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
       <input type="hidden" name="form-name" value="lead" />
@@ -28,6 +29,29 @@
       <input type="checkbox" name="needs" value="Print" />
       <input type="checkbox" name="needs" value="Not sure yet" />
       <textarea name="notes"></textarea>
+    </form>
+
+    <!-- Quick-quote widget form -->
+    <form name="quick-quote" netlify netlify-honeypot="qq-bot-field" hidden>
+      <input name="qq-bot-field" />
+      <input type="hidden" name="form-name" value="quick-quote" />
+      <input type="hidden" name="source" />
+      <input type="hidden" name="page_url" />
+      <input type="hidden" name="submitted_at" />
+      <input type="email" name="email" />
+      <select name="need">
+        <option value="Apparel">Apparel</option>
+        <option value="Promo">Promo</option>
+        <option value="Print">Print</option>
+        <option value="Signage">Signage</option>
+        <option value="Not sure">Not sure</option>
+      </select>
+      <select name="quantity">
+        <option value="Under 50">Under 50</option>
+        <option value="50-250">50-250</option>
+        <option value="250-1000">250-1000</option>
+        <option value="1000+">1000+</option>
+      </select>
     </form>
   </body>
 </html>

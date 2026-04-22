@@ -1,0 +1,158 @@
+---
+import Base from '../layouts/Base.astro';
+import GuaranteeBlock from '../components/GuaranteeBlock.astro';
+import LeadForm from '../components/LeadForm.astro';
+
+const faqs = [
+  { q: "What's your minimum order?", a: "Most products start at 24 units. For some items like business cards and stickers, we can go lower. Tell us what you need and we'll find a way to make it work." },
+  { q: "How fast can you turn around?", a: "Our average turnaround is 7 business days from proof approval. Rush jobs are possible — text us and we'll tell you what's realistic for your deadline." },
+  { q: "Do you ship nationwide?", a: "Yes. We're based in Tampa and ship across the U.S. Most of our clients are in the Southeast, but we deliver coast to coast." },
+  { q: "Can you match a corporate brand standard?", a: "Absolutely. Send us your brand guide, PMS colors, logo files, and specs. We'll match them exactly and send a proof for your approval before we print." },
+  { q: "Do you hold inventory for repeat orders?", a: "Yes, for regular clients we can store blanks, screens, and embroidery files so reorders ship faster. Ask us about setting up a repeat-order program." },
+  { q: "What's included in a flat-rate quote?", a: "Everything: artwork setup, screens or digitizing, production, packaging, and ground shipping. The number we quote is the number you pay. No surprise fees." },
+  { q: "What if I miss my deadline?", a: "You won't — that's the guarantee. If we miss the ship date we agreed on, it ships free. No excuses, no fine print." },
+  { q: "Can I see a physical sample first?", a: "Yes. For larger orders or new products, we can send a pre-production sample for approval. There's a small fee for the sample, but it's credited to your final order." },
+];
+---
+
+<Base
+  title="How We Work | AC Apparel Tampa FL"
+  description="Simple, fast, and built around your deadline. See our 6-step process from first contact to delivery."
+  canonicalPath="/process"
+>
+
+  <!-- Hero -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4" data-reveal>How It Works</p>
+      <h1 class="text-5xl md:text-7xl font-extrabold text-charcoal tracking-tighter leading-[0.95] mb-6 max-w-3xl" data-reveal>
+        How we work.
+      </h1>
+      <p class="text-lg text-slate-body leading-relaxed max-w-2xl" data-reveal>
+        Simple, fast, and built around your deadline.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6-step process -->
+  <section class="py-16 md:py-24 bg-offwhite">
+    <div class="max-w-5xl mx-auto px-6 space-y-20 md:space-y-28">
+      <!-- Step 1 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center" data-reveal>
+        <div>
+          <p class="text-6xl font-extrabold text-accent mb-4">01</p>
+          <h3 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-4">You tell us what you need</h3>
+          <p class="text-slate-body leading-relaxed">Quantity, deadline, and the general idea. You don't need a spec sheet, a design file, or even a logo ready. Just tell us what you're thinking and we'll take it from there.</p>
+        </div>
+        <img src="/images/homepage/step-1.webp" alt="Laptop with design file" class="w-full h-64 object-cover rounded-sm" loading="lazy" />
+      </div>
+
+      <!-- Step 2 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center" data-reveal>
+        <div class="md:order-2">
+          <p class="text-6xl font-extrabold text-accent mb-4">02</p>
+          <h3 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-4">We send a quote in 24 hours</h3>
+          <p class="text-slate-body leading-relaxed">Flat-rate. No hidden fees, no "setup charges" tacked on later. The number we quote is the number you pay. Every time.</p>
+        </div>
+        <img src="/images/homepage/step-2.webp" alt="Document review" class="w-full h-64 object-cover rounded-sm md:order-1" loading="lazy" />
+      </div>
+
+      <!-- Step 3 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center" data-reveal>
+        <div>
+          <p class="text-6xl font-extrabold text-accent mb-4">03</p>
+          <h3 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-4">We send a mockup in 24 hours</h3>
+          <p class="text-slate-body leading-relaxed">A real mockup of your design on the actual product. Approve it, tweak it, or scrap it and start over. We work until you're happy with what you see.</p>
+        </div>
+        <img src="/images/homepage/craft-1.webp" alt="Design mockup in progress" class="w-full h-64 object-cover rounded-sm" loading="lazy" />
+      </div>
+
+      <!-- Step 4 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center" data-reveal>
+        <div class="md:order-2">
+          <p class="text-6xl font-extrabold text-accent mb-4">04</p>
+          <h3 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-4">We print, stitch, or press in Tampa</h3>
+          <p class="text-slate-body leading-relaxed">In-house production on our equipment, by our people. No outsourcing, no middlemen. If there's an issue, we catch it before it leaves the shop.</p>
+        </div>
+        <img src="/images/homepage/step-3.webp" alt="Press in motion" class="w-full h-64 object-cover rounded-sm md:order-1" loading="lazy" />
+      </div>
+
+      <!-- Step 5 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center" data-reveal>
+        <div>
+          <p class="text-6xl font-extrabold text-accent mb-4">05</p>
+          <h3 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-4">Quality check before it leaves</h3>
+          <p class="text-slate-body leading-relaxed">Every piece gets inspected before it goes in a box. Print quality, stitch counts, color accuracy, sizing — we check it all so you don't have to.</p>
+        </div>
+        <img src="/images/homepage/craft-2.webp" alt="Quality check on embroidered product" class="w-full h-64 object-cover rounded-sm" loading="lazy" />
+      </div>
+
+      <!-- Step 6 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center" data-reveal>
+        <div class="md:order-2">
+          <p class="text-6xl font-extrabold text-accent mb-4">06</p>
+          <h3 class="text-2xl md:text-3xl font-bold text-charcoal tracking-tight mb-4">Ships on your date</h3>
+          <p class="text-slate-body leading-relaxed">Tracking number in your inbox. On time, or it ships free. That's the guarantee — no asterisks, no exceptions.</p>
+        </div>
+        <img src="/images/homepage/step-4.webp" alt="Packed boxes ready to ship" class="w-full h-64 object-cover rounded-sm md:order-1" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee callout -->
+  <GuaranteeBlock />
+
+  <!-- FAQ -->
+  <section class="py-24 md:py-32">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-charcoal tracking-tight mb-12" data-reveal>Frequently asked questions</h2>
+      <div class="divide-y divide-charcoal/10" id="faq-list">
+        {faqs.map((faq, i) => (
+          <div class="faq-item py-6" data-reveal>
+            <button class="faq-toggle w-full flex items-center justify-between text-left cursor-pointer group">
+              <h3 class="text-lg font-semibold text-charcoal group-hover:text-accent transition-colors pr-4">{faq.q}</h3>
+              <svg class="w-5 h-5 shrink-0 text-charcoal/40 transition-transform faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p class="text-slate-body leading-relaxed pt-4">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="quote" class="bg-dark py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+        <div class="flex flex-col justify-center" data-reveal>
+          <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">Ready to get started?</h2>
+          <p class="text-lg text-white/50 leading-relaxed mb-10">Send us your project details. Mockup and quote in 24 hours.</p>
+          <div class="space-y-3">
+            <p><a href="mailto:info@acapp.us" class="text-xl font-bold text-white hover:text-accent transition-colors duration-300">info@acapp.us</a></p>
+            <p><a href="sms:+17724802284" class="text-white/50 hover:text-accent transition-colors duration-300">(772) 480-2284 <span class="text-white/30 text-xs">Text preferred</span></a></p>
+          </div>
+        </div>
+        <div data-reveal>
+          <LeadForm source="process-page" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<script>
+  document.querySelectorAll('.faq-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const chevron = item?.querySelector('.faq-chevron');
+      if (answer && chevron) {
+        answer.classList.toggle('open');
+        chevron.classList.toggle('rotate-180');
+      }
+    });
+  });
+</script>

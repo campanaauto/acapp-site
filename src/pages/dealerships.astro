@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import GuaranteeBlock from '../components/GuaranteeBlock.astro';
 import LeadForm from '../components/LeadForm.astro';
+import StickyQuoteSidebar from '../components/StickyQuoteSidebar.astro';
 
 const products = [
   { name: "Service advisor polos", image: "/images/dealerships/product-1.webp" },
@@ -18,38 +19,30 @@ const products = [
   description="Branded merch for dealerships. Service uniforms, lot flags, customer gifts, and event swag. Mockup in 24 hours. On your deadline or it ships free."
   canonicalPath="/dealerships"
   ogImage="/images/dealerships/hero.webp"
+  mobileQuoteHref="#quote"
 >
 
+  <StickyQuoteSidebar source="dealerships" />
+
   <!-- HERO -->
-  <section class="relative min-h-[80vh] flex items-end overflow-hidden -mt-16 md:-mt-18">
+  <section class="relative min-h-[80vh] flex items-end overflow-hidden -mt-[calc(36px+56px)] lg:-mt-[calc(36px+64px)]">
     <div class="absolute inset-0">
       <img src="/images/dealerships/hero.webp" alt="Service advisor in branded polo on dealership floor" class="w-full h-full object-cover scale-105" />
       <div class="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-transparent"></div>
     </div>
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-20 md:pb-28 pt-40">
       <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-5">Dealerships</p>
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tighter leading-[0.95] mb-6 max-w-4xl">
-        Branded merch<br /> for dealerships.
-      </h1>
-      <p class="text-xl md:text-2xl text-white/90 font-medium mb-3">
-        Ready for your grand opening or it ships free.
-      </p>
-      <p class="text-sm md:text-base text-white/50 mb-10 max-w-xl leading-relaxed">
-        Service uniforms, lot flags, customer gifts, and event swag. Tampa-based, serving dealerships across Florida, Georgia, and the Carolinas.
-      </p>
-      <a href="#quote" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-bold text-base rounded-sm hover:bg-accent-dark transition-all duration-300">
-        Get a Dealership Quote
-      </a>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tighter leading-[0.95] mb-6 max-w-4xl">Branded merch<br /> for dealerships.</h1>
+      <p class="text-xl md:text-2xl text-white/90 font-medium mb-3">Ready for your grand opening or it ships free.</p>
+      <p class="text-sm md:text-base text-white/50 mb-10 max-w-xl leading-relaxed">Service uniforms, lot flags, customer gifts, and event swag. Tampa-based, serving dealerships across Florida, Georgia, and the Carolinas.</p>
+      <a href="#quote" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-bold text-base rounded-sm hover:bg-accent-dark transition-all duration-300">Get a Dealership Quote</a>
     </div>
   </section>
-
 
   <!-- PAIN BLOCK -->
   <section class="py-24 md:py-32 bg-offwhite">
     <div class="max-w-4xl mx-auto px-6 text-center" data-reveal>
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-charcoal tracking-tight leading-tight mb-12">
-        You're tired of…
-      </h2>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-charcoal tracking-tight leading-tight mb-12">You're tired of…</h2>
       <div class="space-y-6 max-w-2xl mx-auto">
         <p class="text-xl md:text-2xl text-slate-body leading-relaxed">Missing your grand opening date</p>
         <div class="w-8 h-px bg-accent mx-auto"></div>
@@ -60,10 +53,7 @@ const products = [
     </div>
   </section>
 
-
-  <!-- GUARANTEE -->
   <GuaranteeBlock />
-
 
   <!-- PRODUCTS GRID -->
   <section class="py-24 md:py-32">
@@ -72,16 +62,13 @@ const products = [
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal>
         {products.map((product) => (
           <div class="group">
-            <div class="overflow-hidden rounded-sm mb-4">
-              <img src={product.image} alt={product.name} class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            </div>
+            <div class="overflow-hidden rounded-sm mb-4"><img src={product.image} alt={product.name} class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" /></div>
             <p class="text-base font-semibold text-charcoal">{product.name}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
-
 
   <!-- USE-CASE EXAMPLES -->
   <section class="py-24 md:py-32 bg-offwhite">
@@ -104,36 +91,26 @@ const products = [
     </div>
   </section>
 
-
   <!-- HOW IT WORKS -->
   <section class="py-24 md:py-32">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 relative" data-reveal>
         <div class="hidden md:block absolute top-14 left-[12.5%] right-[12.5%] h-px bg-charcoal/10"></div>
-        <div class="relative">
-          <p class="text-5xl font-extrabold text-accent mb-5">01</p>
-          <h3 class="text-xl font-bold text-charcoal tracking-tight mb-3">Tell us what you need</h3>
-          <p class="text-slate-body text-sm leading-relaxed">Quantity, deadline, and the general idea. No spec sheet required.</p>
-        </div>
-        <div class="relative">
-          <p class="text-5xl font-extrabold text-accent mb-5">02</p>
-          <h3 class="text-xl font-bold text-charcoal tracking-tight mb-3">Mockup in 24 hours</h3>
-          <p class="text-slate-body text-sm leading-relaxed">Approve it, tweak it, or scrap it. We work until you're happy.</p>
-        </div>
-        <div class="relative">
-          <p class="text-5xl font-extrabold text-accent mb-5">03</p>
-          <h3 class="text-xl font-bold text-charcoal tracking-tight mb-3">We print in Tampa</h3>
-          <p class="text-slate-body text-sm leading-relaxed">In-house production. Real shop. Real people.</p>
-        </div>
-        <div class="relative">
-          <p class="text-5xl font-extrabold text-accent mb-5">04</p>
-          <h3 class="text-xl font-bold text-charcoal tracking-tight mb-3">Ships on your date</h3>
-          <p class="text-slate-body text-sm leading-relaxed">Tracking in your inbox. On time or it ships free.</p>
-        </div>
+        {[
+          { n: '01', h: 'Tell us what you need', p: 'Quantity, deadline, and the general idea.' },
+          { n: '02', h: 'Mockup in 24 hours', p: 'Approve it, tweak it, or scrap it.' },
+          { n: '03', h: 'We print in Tampa', p: 'In-house production. Real shop.' },
+          { n: '04', h: 'Ships on your date', p: 'On time or it ships free.' },
+        ].map((s) => (
+          <div class="relative">
+            <p class="text-5xl font-extrabold text-accent mb-5">{s.n}</p>
+            <h3 class="text-xl font-bold text-charcoal tracking-tight mb-3">{s.h}</h3>
+            <p class="text-slate-body text-sm leading-relaxed">{s.p}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
-
 
   <!-- FINAL CTA / FORM -->
   <section id="quote" class="bg-dark py-24 md:py-32">
@@ -141,20 +118,14 @@ const products = [
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         <div class="flex flex-col justify-center" data-reveal>
           <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4">Dealerships</p>
-          <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-            Start your<br /> dealership order.
-          </h2>
-          <p class="text-lg text-white/50 leading-relaxed mb-10">
-            Get a flat-rate quote inside 24 hours.
-          </p>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">Start your<br /> dealership order.</h2>
+          <p class="text-lg text-white/50 leading-relaxed mb-10">Get a flat-rate quote inside 24 hours.</p>
           <div class="space-y-3">
-            <p><a href="tel:+17724802284" class="text-2xl font-bold text-white hover:text-accent transition-colors duration-300">(772) 480-2284</a></p>
-            <p><a href="mailto:info@acapp.us" class="text-white/50 hover:text-accent transition-colors duration-300">info@acapp.us</a></p>
+            <p><a href="mailto:info@acapp.us" class="text-xl font-bold text-white hover:text-accent transition-colors duration-300">info@acapp.us</a></p>
+            <p><a href="sms:+17724802284" class="text-white/50 hover:text-accent transition-colors duration-300">(772) 480-2284 <span class="text-white/30 text-xs">Text preferred</span></a></p>
           </div>
         </div>
-        <div data-reveal>
-          <LeadForm source="dealerships" />
-        </div>
+        <div data-reveal><LeadForm source="dealerships" /></div>
       </div>
     </div>
   </section>

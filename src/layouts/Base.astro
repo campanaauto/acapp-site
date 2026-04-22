@@ -1,16 +1,20 @@
 ---
 import '../styles/global.css';
+import TopBar from '../components/TopBar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import QuickQuoteWidget from '../components/QuickQuoteWidget.astro';
+import MobileCTABar from '../components/MobileCTABar.astro';
 
 interface Props {
   title: string;
   description: string;
   ogImage?: string;
   canonicalPath?: string;
+  mobileQuoteHref?: string;
 }
 
-const { title, description, ogImage = '/images/homepage/hero.webp', canonicalPath = '' } = Astro.props;
+const { title, description, ogImage = '/images/homepage/hero.webp', canonicalPath = '', mobileQuoteHref = '/contact' } = Astro.props;
 const canonicalUrl = `https://acapp.us${canonicalPath}`;
 ---
 
@@ -45,11 +49,14 @@ const canonicalUrl = `https://acapp.us${canonicalPath}`;
     <meta name="twitter:image" content={`https://acapp.us${ogImage}`} />
   </head>
   <body class="bg-white text-slate-body font-sans antialiased">
+    <TopBar />
     <Header />
     <main>
       <slot />
     </main>
     <Footer />
+    <QuickQuoteWidget />
+    <MobileCTABar quoteHref={mobileQuoteHref} />
     <script>
       import '../scripts/scroll-reveal.js';
     </script>

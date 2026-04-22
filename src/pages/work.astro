@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+import LeadForm from '../components/LeadForm.astro';
+
+const projects = [
+  { category: 'DEALERSHIP', title: 'Service advisor uniform refresh', desc: '120 embroidered polos, 200 printed tees, delivered in 6 days', image: '/images/projects/project-1.webp' },
+  { category: 'CONTRACTOR', title: 'Grand opening event swag', desc: '400 branded tees, 50 hi-vis vests, 100 tumblers for ribbon cut day', image: '/images/projects/project-2.webp' },
+  { category: 'FRANCHISE', title: 'Multi-location staff uniforms', desc: '300 aprons and tees shipped to 4 locations in 5 business days', image: '/images/projects/project-3.webp' },
+  { category: 'EVENT', title: 'Trade show booth kit', desc: 'Banners, staff polos, 500 giveaway totes. All brand-matched.', image: '/images/projects/project-4.webp' },
+  { category: 'DEALERSHIP', title: 'Customer holiday gift kits', desc: '250 branded tumblers, gift boxes, and tissue. Ready for December 1.', image: '/images/projects/project-5.webp' },
+  { category: 'NONPROFIT', title: 'Charity 5K race packets', desc: '800 event tees, 200 volunteer polos, finisher medals. 10-day turnaround.', image: '/images/projects/project-6.webp' },
+  { category: 'CONTRACTOR', title: 'Recruitment booth kit', desc: 'Job fair banners, branded hard hats, 300 "We\'re Hiring" tees', image: '/images/projects/project-7.webp' },
+  { category: 'FRANCHISE', title: 'Seasonal crew refresh', desc: '150 summer tees and aprons sized and shipped before first shift', image: '/images/projects/project-8.webp' },
+  { category: 'DEALERSHIP', title: 'Co-op quarter order', desc: 'Service drive uniforms and showroom polos. Shipped Friday, ordered Monday.', image: '/images/projects/project-9.webp' },
+  { category: 'EVENT', title: 'Corporate conference swag', desc: '600 attendee bags, lanyards, notebooks, and branded pens', image: '/images/projects/project-10.webp' },
+  { category: 'CONTRACTOR', title: 'Hi-vis fleet uniforms', desc: '200 safety polos with reflective logos for 3 job sites', image: '/images/projects/project-11.webp' },
+  { category: 'NONPROFIT', title: 'Gala sponsor gift sets', desc: '75 premium branded tumblers and tote sets for VIP sponsors', image: '/images/projects/project-12.webp' },
+];
+
+const filters = ['All', 'Dealerships', 'Contractors', 'Franchise', 'Nonprofits', 'Events'];
+---
+
+<Base
+  title="Our Work | AC Apparel Tampa FL"
+  description="See real projects delivered on real deadlines. Branded apparel, promo, and print for dealerships, contractors, franchise owners, and more."
+  canonicalPath="/work"
+>
+
+  <!-- Hero -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-4" data-reveal>Our Work</p>
+      <h1 class="text-5xl md:text-7xl font-extrabold text-charcoal tracking-tighter leading-[0.95] mb-6 max-w-4xl" data-reveal>
+        Real projects.<br />Real deadlines.<br />Delivered.
+      </h1>
+      <p class="text-lg text-slate-body leading-relaxed max-w-2xl" data-reveal>
+        A look at what we're printing, stitching, and pressing across the Southeast.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter bar -->
+  <section class="border-b border-charcoal/10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex gap-2 overflow-x-auto py-4 scroll-snap-x" id="filter-bar">
+        {filters.map((f, i) => (
+          <button
+            class={`filter-btn shrink-0 px-4 py-2 text-sm font-medium rounded-full border transition-all duration-200 cursor-pointer ${i === 0 ? 'active border-accent text-accent' : 'border-charcoal/15 text-slate-body hover:border-accent hover:text-accent'}`}
+            data-filter={f === 'All' ? 'all' : f.toUpperCase().replace('S', '').replace('NONPROFITS', 'NONPROFIT').replace('EVENTS', 'EVENT').replace('DEALERSHIP', 'DEALERSHIP').replace('CONTRACTOR', 'CONTRACTOR').replace('FRANCHISE', 'FRANCHISE')}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Project grid -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid">
+        {projects.map((p) => (
+          <div class="project-tile group" data-category={p.category} data-reveal>
+            <div class="overflow-hidden rounded-sm mb-4">
+              <img src={p.image} alt={p.title} class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-2">{p.category}</p>
+            <h3 class="text-lg font-bold text-charcoal mb-1">{p.title}</h3>
+            <p class="text-sm text-slate-body leading-relaxed mb-3">{p.desc}</p>
+            <a href="/contact" class="text-sm text-accent font-medium hover:underline">Similar project? Get a quote &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="quote" class="bg-dark py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+        <div class="flex flex-col justify-center" data-reveal>
+          <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">Have a project like these?</h2>
+          <p class="text-lg text-white/50 leading-relaxed mb-10">Tell us what you need. We'll send a mockup and a price within 24 hours.</p>
+          <div class="space-y-3">
+            <p><a href="mailto:info@acapp.us" class="text-xl font-bold text-white hover:text-accent transition-colors duration-300">info@acapp.us</a></p>
+            <p><a href="sms:+17724802284" class="text-white/50 hover:text-accent transition-colors duration-300">(772) 480-2284 <span class="text-white/30 text-xs">Text preferred</span></a></p>
+          </div>
+        </div>
+        <div data-reveal>
+          <LeadForm source="work-page" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const tiles = document.querySelectorAll('.project-tile');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.classList.remove('active', 'border-accent', 'text-accent'));
+      btn.classList.add('active', 'border-accent', 'text-accent');
+
+      const filter = (btn as HTMLElement).dataset.filter;
+      tiles.forEach((tile) => {
+        const cat = (tile as HTMLElement).dataset.category;
+        if (filter === 'all' || cat === filter) {
+          (tile as HTMLElement).style.display = '';
+        } else {
+          (tile as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
